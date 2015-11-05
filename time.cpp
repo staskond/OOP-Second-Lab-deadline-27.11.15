@@ -14,10 +14,28 @@ Time::Time()
 		throw std::logic_error("Error: time is not correct.");
 }
 
+void Time::NextMinute()//мы это не используем, но пусть будет
+{
+	if (m_minutes == 59)
+	{
+		m_minutes = 0;
+		if (m_hour == 23)
+			m_hour = 0;
+		else
+			++m_hour;
+	}
+	else
+		++m_minutes;
+};
+
+/*Time * Time::Make(const int _hour, const int _minutes)
+{
+
+}*метод фабрик, почему-что внутри не работает isValide()?*/
+
 Time::Time(const int _hour, const int _minutes)
 	:m_hour(_hour),
-	m_minutes(_minutes)
-{
+	m_minutes(_minutes){
 	if (!isValide())
 		throw std::logic_error("Error: time is not correct.");
 }
