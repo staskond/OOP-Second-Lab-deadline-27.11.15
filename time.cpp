@@ -1,7 +1,7 @@
 #include "time.h"
 #include <ctime>
 #include <iostream>
-//delete this
+
 Time::Time()
 {
 	time_t currentTime = time(nullptr);
