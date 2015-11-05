@@ -10,7 +10,7 @@ public:
 
 	const std::string & GetFullName() const;
 	const std::string & GetGender() const;
-	static Person * Make(const std::string & _fullName, const std::string & _Gender);
+	static Person * Make(const std::string & _fullName, const std::string & _Gender);//обьявления метода фабрик
 
 private:
 	Person(const std::string & _fullName, const std::string & _Gender);//закрытый конструктор, для использования метод фабрик
