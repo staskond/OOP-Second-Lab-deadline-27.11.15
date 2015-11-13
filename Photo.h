@@ -9,47 +9,53 @@
 class Photo
 {
 public:
-	Photo(const std::string & _roadToFile, Date(int _year, int _month, int _day), Time(const int _hour, const int _minutes), const std::string & _commet);//узнать, можно ли так делать?
-	//Photo(const std::string & _roadToFile, Date _date, Time _time, const std::sting & _commet, Person );
-	const Date GetYear() const;
-	const Date GetMonth() const;
-	const Date GetDay() const;
-	const Time GetHour() const;
-	const Time GetMinutes() const;
+	//Photo(  int _year, int _month, int _day, const int _hour, const int _minutes);
+	Photo(const std::string & _fullName, const std::string & _Gender, const std::string & _PlaceNamed, const std::string & _city, const std::string & _country);
+
+	const Place & GetPlaceNamed() const;
+	const Place & GetCity() const;
+	const Place & GetCountry() const;
+	const Person & GetFullName() const;
+	const Person & GetGender() const;
+
 
 private:
 	const std::string m_roadToFile;
 	const std::string m_commet;
-	Time m_hour, m_minutes;
-	Date m_year, m_month, m_day;
+	const Time m_hour, m_minutes;
+	const Date m_year, m_month, m_day;
+	Person m_FullName;
+	Person m_Gender;
+
+	Place m_PlaceNamed;
+	Place m_city;
+	Place m_country;
 };
 
-inline const Time Photo::GetHour() const
+inline const Place & Photo::GetPlaceNamed() const
 {
-	return m_hour;
+	return m_PlaceNamed;
 }
 
-inline const Time Photo::GetMinutes() const
+inline const Place & Photo::GetCity() const
 {
-	return m_minutes;
+	return m_city;
 }
 
-
-inline const Date Photo::GetYear() const
+inline const Place & Photo::GetCountry() const
 {
-	return m_year;
+	return m_country;
 }
 
-inline const Date Photo::GetMonth() const
+const Person & Photo::GetGender() const
 {
-	return m_month;
+	return m_Gender;
 }
 
-inline const Date Photo::GetDay() const
+const Person & Photo::GetGender() const
 {
-	return m_day;
+	return m_FullName;
 }
-
 //Photo testPhoto1( 2013, 03, 23, 11, 06, "This my test");
 
 
