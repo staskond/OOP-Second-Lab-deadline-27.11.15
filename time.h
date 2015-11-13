@@ -11,7 +11,7 @@ public:
 	int GetHour() const;
 	int GetMinutes() const;
 	bool isValide() const;
-	void NextMinute()
+	void NextMinute();
 private:
 	//Time(const int _hour, const int _minutes);закрытый конструктор фабрик, нужен только если буду использовать этот метод
 	int m_hour;
