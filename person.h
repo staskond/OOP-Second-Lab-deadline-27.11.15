@@ -6,7 +6,6 @@
 class Person
 {
 public:
-	
 
 	const std::string & GetFullName() const;
 	const std::string & GetGender() const;

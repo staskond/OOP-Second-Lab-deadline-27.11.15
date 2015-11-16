@@ -3,7 +3,7 @@
 #include <cassert>
 #include <cstdio>
 #include <iostream>
-
+/*
 Date::Date()
 {
 	// Выясняем текущее системное время
@@ -17,8 +17,8 @@ Date::Date()
 		// Проверяем инвариант
 		if (!isValide())
 			throw std::logic_error("Error: date is not valid!")?
-};
-
+};*/
+/*
 Date::Date(const char * _yyyyMMDD, char _sep)
 {
 	// Пытаемся распознать строковое представление даты по шаблону.
@@ -32,7 +32,7 @@ Date::Date(const char * _yyyyMMDD, char _sep)
 			// Проверяем инвариант
 			if (!IsValid())
 				throw std::logic_error(“Error: date is not valid!”)?
-}
+}*/
 
 Date::Date(int _year, int _month, int _day)
 	:m_Year(_year),

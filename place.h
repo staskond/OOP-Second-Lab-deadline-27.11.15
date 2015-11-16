@@ -6,6 +6,7 @@
 class Place
 {
 public:
+	Place();
 	Place(const std::string & _PlaceNamed, const std::string & _city, const std::string & _country);
 
 	const std::string & GetPlaceNamed() const;
