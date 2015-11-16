@@ -9,6 +9,8 @@
 class Photo
 {
 public:
+	Date TempDate;
+	Time TempTime;
 	Photo(Person _fullName, Person _Gender, Place _PlaceNamed, Place _city, Place _country);//Полное имя,
 	//Photo(  int _year, int _month, int _day, const int _hour, const int _minutes);
 	/*класс Photo(фотография) :
@@ -32,7 +34,17 @@ public:
 		Time _minutes,
 		const std::string & _commet);
 
-	Photo(const std::string & _roadTOFile, Date(int _year, int _month, int _day));
+	//Photo(const std::string & _roadTOFile, Date(int _year, int _month, int _day));
+	
+
+
+	Photo(const std::string & _roadTOFile,
+		int _year,
+		int _month,
+		int _Day,
+		int _hour,
+		int _minutes,
+		const std::string & _commet);
 
 
 	Photo(const std::string & _roadTOFile,
