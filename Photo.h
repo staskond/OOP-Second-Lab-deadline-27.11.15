@@ -11,9 +11,7 @@
 class Photo
 {
 public:
-
-
-
+	
 	Photo(const std::string & _roadTOFile,//конструктор, задающий путь к файлу, дату, время и комментарий 
 		Date _date, 
 		Time _time,
@@ -40,15 +38,14 @@ public:
 		const std::string & _commet)
 	{
 	}
-
-
+//	int SizePersonVec();
+	//Person const & getPerson(int index) const;
+	//void addPerson(Person const & _obj);
 	const std::string & GetRoadToFile() const;
 	const std::string & GetCommet() const;
-
-
-	const Person & GetFullName() const;
-	const Person & GetGender() const;
-
+	const Date & GetDate() const;
+	const Time & GetTime() const;
+	void IsValidePhoto() const;
 
 
 private:
@@ -57,13 +54,39 @@ private:
 	Time m_time;
 	const std::string m_roadToFile;
 	const std::string m_commet;
-	const Time m_hour, m_minutes;
-	const Date m_year, m_month, m_day;
 	std::vector < Place > m_place;
 	std::vector < Person > m_person;
 	
 	
 };
+
+
+
+//inline int Photo::SizePersonVec()
+//{
+	//return m_person.size();
+//}
+
+//inline Person const & Photo::getPerson(int index) const
+//{
+//	return m_person.at(index);
+//}
+
+/*int Parent::findXXXIndex(XXX const & obj) const
+{
+int nXXX = getXXXCount();
+for (int i = 0; i < nXXX; i++)
+if (m_VecXXX[i] == obj)
+return i;
+return -1;
+}
+*/
+
+
+//inline void Photo::addPerson(Person const & _obj)
+//{
+	//m_person.push_back(_obj);
+//}
 
 inline const std::string & Photo::GetRoadToFile() const
 {
@@ -74,6 +97,18 @@ inline const std::string & Photo::GetCommet() const
 {
 	return m_commet;
 }
+
+inline const Date & Photo::GetDate() const
+{
+	return m_date;
+}
+
+inline const Time & Photo::GetTime() const
+{
+	return m_time;
+}
+
+
 
 
 
