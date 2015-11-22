@@ -28,6 +28,4 @@ inline const std::string & Person::GetGender() const
 	return m_Gender;
 }
 
-
-
 #endif // _PERSON_HPP_
