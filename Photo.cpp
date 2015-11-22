@@ -1,5 +1,5 @@
 #include "Photo.h"
-
+/*
 Photo::Photo(Person _fullName, Person _Gender, Place _PlaceNamed, Place _city, Place _country)
 	:m_FullName(_fullName),
 	m_Gender(_Gender),
@@ -8,7 +8,6 @@ Photo::Photo(Person _fullName, Person _Gender, Place _PlaceNamed, Place _city, P
 	m_country(_country)
 {
 }
-
 Photo::Photo(const std::string & _roadTOFile, Date _year, Date _month, Date _Day, Time _hour, Time _minutes, const std::string & _commet)
 	:m_roadToFile(_roadTOFile),
 	m_year(_year),
@@ -18,15 +17,34 @@ Photo::Photo(const std::string & _roadTOFile, Date _year, Date _month, Date _Day
 	m_minutes(_minutes),
 	m_commet(_commet)
 {
-}
+}*/
 
-Photo::Photo(const std::string & _roadTOFile, Date(int _year, int _month, int _day))
+
+
+Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, const std::string & _commet)
 	:m_roadToFile(_roadTOFile),
-	m_month(_)
+	m_date(_date),
+	m_time(_time),
+	m_commet(_commet)
 {
 }
 
-Photo::Photo(const std::string & _roadTOFile, Date _year, Date _month, Date _Day, Time _hour, Time _minutes, Person _fullName, Person _Gender, Place _PlaceNamed, Place _city, Place _country, const std::string & _commet)
+
+Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::vector<Person> _person, std::vector<Place> _place, const std::string & _commet)
+	:m_roadToFile(_roadTOFile),
+	m_date(_date),
+	m_time(_time),
+	m_place(_place),
+	m_person(_person),
+	m_commet(_commet)
 {
 }
 
+Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::vector <Place> _place, const std::string & _commet)
+	:m_roadToFile(_roadTOFile),
+	m_date(_date),
+	m_time(_time),
+	m_place(_place),
+	m_commet(_commet)
+{
+}
