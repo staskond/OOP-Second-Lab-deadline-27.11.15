@@ -31,3 +31,26 @@ void Album::clearPhoto()
 	m_photo.clear();
 }
 
+void Album::removePhoto(Photo const & _photo)
+{
+	int PhotoIndex = -1;
+
+	int nPhoto = GetAlbumSize();
+	for (int i = 0; i < nPhoto; i++)
+		if (m_photo[i] == &_photo)
+		{
+			PhotoIndex = i;
+			break;
+		}
+
+	if (PhotoIndex == -1)
+		throw std::logic_error("Photo does not exists in Album");
+
+	delete m_photo.at(PhotoIndex);
+	m_photo.erase(m_photo.begin() + PhotoIndex);
+}
+
+int Album::GetAlbumSize()
+{
+	return m_photo.size();
+}
