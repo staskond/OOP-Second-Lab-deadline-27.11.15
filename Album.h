@@ -42,7 +42,12 @@ public:
 	class PhotoIterator
 	{
 	public:
-
+		// —инонимы типов, нужные дл€ согласовани€ итератора и стандартной библиотеки
+		typedef std::input_iterator_tag iterator_category;
+		typedef Photo const * value_type;
+		typedef ptrdiff_t difference_type;
+		typedef Photo const ** pointer;
+		typedef Photo const * & reference;
 		// —иноним типа дл€ итератора реально используемого контейнера
 		typedef std::vector< std::unique_ptr< Photo > >::const_iterator BaseIterator;
 
@@ -107,3 +112,8 @@ inline int Album::getPhotoCount() const
 	return m_photo.size();
 }
 #endif // _ALBUM_HPP_
+
+
+/*  ѕеребираем главы первой книги через интервальный цикл for
+    for ( Chapter const * pChapter : pBook->chapters() )
+        std::cout << pChapter->getTitle() << std::endl;*/
