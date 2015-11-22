@@ -35,9 +35,7 @@ public:
 		Date _date,
 		Time _time,
 		std::vector <Place> _place,
-		const std::string & _commet)
-	{
-	}
+		const std::string & _commet);
 //	int SizePersonVec();
 	//Person const & getPerson(int index) const;
 	//void addPerson(Person const & _obj);
