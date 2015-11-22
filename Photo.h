@@ -12,31 +12,16 @@
 class Photo
 {
 public:
-	
-	Photo(const std::string & _roadTOFile,//конструктор, задающий путь к файлу, дату, время и комментарий 
-		Date _date, 
-		Time _time,
-		const std::string & _commet);
+	//конструктор, задающий путь к файлу, дату, время и комментарий
+	Photo(const std::string & _roadTOFile, Date _date, Time _time, const std::string & _commet); 
 
+	//конструктор, задающий путь к файлу, дату, время, место, личность на фотограффии и комментарий реализация №1
+	Photo(const std::string & _roadTOFile, Date _date, Time _time, std::vector <Person> _person, Place _place, const std::string & _commet);
 
-	Photo(const std::string & _roadTOFile,//конструктор, задающий путь к файлу, дату, время, место, личность на фотограффии и комментарий реализация №1
-		Date _date,
-		Time _time,
-		std::vector <Person> _person,
-		Place _place,
-		const std::string & _commet);
-
-	Photo(const std::string & _roadTOFile,//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1
-		Date _date,
-		Time _time,
-		std::vector <Person> _person,
-		const std::string & _commet);
-	
-	Photo(const std::string & _roadTOFile,//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1
-		Date _date,
-		Time _time,
-		Place _place,
-		const std::string & _commet);
+	//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1	
+	Photo(const std::string & _roadTOFile, Date _date, Time _time, std::vector <Person> _person, const std::string & _commet);
+	//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1
+	Photo(const std::string & _roadTOFile, Date _date, Time _time, Place _place, const std::string & _commet);
 //	int SizePersonVec();
 	//Person const & getPerson(int index) const;
 	//void addPerson(Person const & _obj);
