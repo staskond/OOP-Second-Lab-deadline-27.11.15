@@ -21,7 +21,7 @@ public:
 	PhotoIterator AlbumBegin () const ;
 
 	PhotoIterator AlbumEnd () const;
-	/*bool hasPhoto(Photo const & _Photo) const;
+	//bool hasPhoto(Photo const & _Photo) const;
 	class IterablePhoto
 	{
 	public:
@@ -37,17 +37,17 @@ public:
 
 		PhotoIterator m_begin, m_end;
 	};
-	*/
+	
 	//https://docs.google.com/document/d/1UP9SSuE8wHZ18VnLXTET0yagEWAr3ms-xb07Xfs5l7o/edit# cтр 29 лекция 8
-	class PhotoIterator
+	/*class PhotoIterator
 	{
 	public:
 		// Синонимы типов, нужные для согласования итератора и стандартной библиотеки
-	/*	typedef std::input_iterator_tag iterator_category;
-		typedef Photo const * value_type;
-		typedef ptrdiff_t difference_type;
-		typedef Photo const ** pointer;
-		typedef Photo const * & reference;*/
+	//	typedef std::input_iterator_tag iterator_category;
+	//	typedef Photo const * value_type;
+	//	typedef ptrdiff_t difference_type;
+	//	typedef Photo const ** pointer;
+	//	typedef Photo const * & reference;
 		// Синоним типа для итератора реально используемого контейнера
 		typedef std::vector< std::unique_ptr< Photo > >::const_iterator BaseIterator;
 
@@ -84,7 +84,7 @@ public:
 
 		// Итератор, полученный от контейнера
 		BaseIterator m_baseIt;
-	};
+	};*/
 
 
 private:
