@@ -34,6 +34,8 @@ Date::Date(const char * _yyyyMMDD, char _sep)
 				throw std::logic_error(“Error: date is not valid!”)?
 }*/
 
+
+
 Date::Date(int _year, int _month, int _day)
 	:m_Year(_year),
 	m_Month(_month),
