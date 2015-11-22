@@ -1,7 +1,7 @@
 #include "time.h"
 #include <ctime>
 #include <iostream>
-
+/*/
 Time::Time()
 {
 	time_t currentTime = time(nullptr);
@@ -12,7 +12,7 @@ Time::Time()
 	m_minutes = currentTM->tm_min;
 	if (!isValide())
 		throw std::logic_error("Error: time is not correct.");
-}
+}*/
 
 void Time::NextMinute()//мы это не используем, но пусть будет
 {

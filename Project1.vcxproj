@@ -118,24 +118,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Лаба 1, вариант У3\MyOfStream.cpp" />
-    <ClCompile Include="..\..\..\Лаба 1, вариант У3\test.cpp" />
     <ClCompile Include="Album.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="place.cpp" />
     <ClCompile Include="Photo.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="time.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Downloads\oop-ki14-master\oop-ki14-master\lab2\06_coursecheckpoints\testslib.hpp" />
-    <ClInclude Include="..\..\..\Лаба 1, вариант У3\MyOfStream.hpp" />
     <ClInclude Include="Album.h" />
     <ClInclude Include="Data.h" />
-    <ClInclude Include="time.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="Photo.h" />
     <ClInclude Include="place.h" />
+    <ClInclude Include="time.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\..\..\..\Downloads\oop-ki14-master\oop-ki14-master\lab2\06_coursecheckpoints\06_coursecheckpoints.vcxproj.filters" />

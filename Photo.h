@@ -111,6 +111,7 @@ inline const Time & Photo::GetTime() const
 
 
 
+
 //Photo testPhoto1( 2013, 03, 23, 11, 06, "This my test");
 
 

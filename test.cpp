@@ -4,8 +4,10 @@
 
 int main()
 {
-	Photo test1("D:\ ", 1997, 10, 2, 12, 15, "Коментарий");
-	std::cout << test1.GetYear;
+	//Photo Test1("D:\ ", Date(1997, 10, 10), Time(13, 55), "Коментарий");
 
-	Photo test2("D;\ ", Date(1997, 10, 2), Time(13, 15), "Коментарий");
+	//::cout << Test1.GetDate;
+	//Photo test1("D:\ ", Date(1997, 10, 10), Time(23, 00), Place("Театр", "Москва", "Россия"), "Я на отдыхе");
+
+	system("Pause");
 }
