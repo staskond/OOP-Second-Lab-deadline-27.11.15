@@ -7,7 +7,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
-//Хз что и как делать, нужно читать 
+
+
 class Photo
 {
 public:
@@ -22,7 +23,7 @@ public:
 		Date _date,
 		Time _time,
 		std::vector <Person> _person,
-		std::vector <Place> _place,
+		Place _place,
 		const std::string & _commet);
 
 	Photo(const std::string & _roadTOFile,//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1
@@ -34,7 +35,7 @@ public:
 	Photo(const std::string & _roadTOFile,//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1
 		Date _date,
 		Time _time,
-		std::vector <Place> _place,
+		Place _place,
 		const std::string & _commet);
 //	int SizePersonVec();
 	//Person const & getPerson(int index) const;
@@ -52,7 +53,7 @@ private:
 	Time m_time;
 	const std::string m_roadToFile;
 	const std::string m_commet;
-	std::vector < Place > m_place;
+	Place m_place;
 	std::vector < Person > m_person;
 	
 	
