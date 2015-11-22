@@ -15,7 +15,7 @@ public:
 	void Album::addPhoto(std::unique_ptr< Photo > _photo);//метод добовл€ющий фото в конец альбома
 	void clearPhoto();
 	void removePhoto(Photo const & _photo);
-	int GetAlbumSize();
+	bool hasPhoto(Photo const & _photo) const;
 	typedef std::vector< std::unique_ptr< Photo > >::const_iterator PhotoIterator;
 	/*https://github.com/zaychenko-sergei/oop-ki14/blob/master/lab2/demo_solution_14/employee.hpp */
 	PhotoIterator AlbumBegin () const ;
@@ -43,11 +43,11 @@ public:
 	{
 	public:
 		// —инонимы типов, нужные дл€ согласовани€ итератора и стандартной библиотеки
-		typedef std::input_iterator_tag iterator_category;
+	/*	typedef std::input_iterator_tag iterator_category;
 		typedef Photo const * value_type;
 		typedef ptrdiff_t difference_type;
 		typedef Photo const ** pointer;
-		typedef Photo const * & reference;
+		typedef Photo const * & reference;*/
 		// —иноним типа дл€ итератора реально используемого контейнера
 		typedef std::vector< std::unique_ptr< Photo > >::const_iterator BaseIterator;
 
