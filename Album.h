@@ -21,7 +21,7 @@ public:
 	PhotoIterator AlbumBegin () const ;
 
 	PhotoIterator AlbumEnd () const;
-	bool hasPhoto(Photo const & _Photo) const;
+	/*bool hasPhoto(Photo const & _Photo) const;
 	class IterablePhoto
 	{
 	public:
@@ -37,7 +37,50 @@ public:
 
 		PhotoIterator m_begin, m_end;
 	};
-	
+	*/
+	//https://docs.google.com/document/d/1UP9SSuE8wHZ18VnLXTET0yagEWAr3ms-xb07Xfs5l7o/edit# cтр 29 лекция 8
+	class PhotoIterator
+	{
+	public:
+
+		// Синоним типа для итератора реально используемого контейнера
+		typedef std::vector< std::unique_ptr< Photo > >::const_iterator BaseIterator;
+
+		// Конструктор - принимает и запоминает итератор от контейнера
+		PhotoIterator(BaseIterator _baseIt)
+			: m_baseIt(_baseIt) {}
+
+		// Оператор разыменования с целью чтения: превращаем умный указатель в обычный
+		Photo const * operator * () const
+		{
+			return (*m_baseIt).get();
+		}
+
+		// Оператор префиксного инкремента: перенаправляем дочернему итератору
+		PhotoIterator & operator ++ ()
+		{
+			++m_baseIt;
+			return *this;
+		}
+
+		// Оператор сравнения на равенство: перенаправляем дочернему итератору
+		bool operator == (PhotoIterator _it) const
+		{
+			return m_baseIt == _it.m_baseIt;
+		}
+
+		// Оператор сравнения на неравенство: перенаправляем дочернему итератору
+		bool operator != (PhotoIterator _it) const
+		{
+			return m_baseIt != _it.m_baseIt;
+		}
+
+	private:
+
+		// Итератор, полученный от контейнера
+		BaseIterator m_baseIt;
+	};
+
 
 private:
 	//название альбома
@@ -50,13 +93,13 @@ private:
 inline Album::PhotoIterator
 Album::AlbumBegin() const
 {
-	return m_photo.begin();
+	return PhotoIterator(m_photo.begin());
 }
 
 inline Album::PhotoIterator
 Album::AlbumEnd() const
 {
-	return m_photo.end();
+	return PhotoIterator(m_photo.end());
 }
 
 inline int Album::getPhotoCount() const
