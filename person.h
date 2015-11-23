@@ -8,7 +8,7 @@ class Person
 public:
 	enum Gender
 	{
-		Male, Fermale
+		Fermale, Male
 	};
 	Person() = default;
 	const std::string & GetFullName() const;
