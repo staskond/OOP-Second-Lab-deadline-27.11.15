@@ -8,9 +8,9 @@ class Album
 public:
 	Album(const std::string & _AlbumName);
 	Album(const std::string & _AlbumName, std::initializer_list< Photo *> _photo);
-	~Album();
-	Album(const Album &) = delete;
-	Album & operator = (const Album &) = delete;
+	//~Album();
+	//Album(const Album &) = delete;
+	//Album & operator = (const Album &) = delete;
 	size_t getPhotoCount() const;//метод возвращающий количество фото в альбоме
 	void addPhoto(std::unique_ptr< Photo > _photo);//метод добовл€ющий фото в конец альбома
 	void clearPhoto();
