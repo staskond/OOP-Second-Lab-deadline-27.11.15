@@ -5,31 +5,25 @@
 #include <algorithm>
 #include <memory>
 
-int main()
-{
-
+int main() {
 	Photo Test1("D:\\ ", Date(1997, 10, 10), Time(13, 13), Place("Памятник", "Москва", "Россия"), "i`m in the moscov");
 	Album testAlbum("TestAlbum");
-	testAlbum.addPhoto(std::make_unique< Photo >("D:\\ ", Date(1997, 10, 10), Time(13, 13), Place("Памятник", "Москва", "Россия"), "Я в москве"));
-	testAlbum.addPhoto(std::make_unique< Photo >("D:\\ ", Date(1995, 10, 10), Time(13, 13), Place("Памятниsdfк", "Харьков", "Украина"), "Я в Украине"));
+	testAlbum.addPhoto(std::make_unique< Photo >("D:\\ ", Date(1997, 10, 10), Time(13, 13), Place("AAA", "BBB", "CCC"), "Я в москве"));
+	testAlbum.addPhoto(std::make_unique< Photo >("D:\\ ", Date(1995, 10, 10), Time(13, 13), std::make_unique <Person>("naklme", Person::Gender::Male), "i1m "));
 	Album testAlbum2("TestAlbum2");
 	Place testplace("sdfsdf", "sdfsdf", "sdfsdf");
-	
-	//std::cout << testAlbum.getPhotoRoadToFile();
-	/*
-	// Создаем тестовую книги двумя способами
-	Album * pAlbum = &testAlbum;
-	for (Photo const * pPhoto : pAlbu)
-		std::cout << pPhoto->GetRoadToFile() << std::endl;
-	// Перебираем главы первой книги через интервальный цикл for
-	//for (std::unique_ptr< Photo > const & pPhoto : pAlbum->PhotosBegin)
-		//sstd::cout << pPhoto->GetCommet() << std::endl;
+	for (auto const & photo : testAlbum.GetPhoto()) {
+		std::cout << photo->GetDate() << std::endl;
+		for (auto const & pPerson : photo->GetPerson())
+			std::cout << pPerson->GetFullName() << "\t" << pPerson->GetGender() << std::endl;
+	}
+	for (auto const & photo : testAlbum.GetPhoto())
+	{
+		std::cout << photo->GetPlace() << std::endl;
+	}
 
-	// Уничтожаем книгу
-	delete pAlbum;
-
-
-	system("pause");*/
+		system("pause >> void");
+		//Photo(const std::string & _roadTOFile, Date _date, Time _time, std::vector <Person> _person, const std::string & _commet);
 }
 
 /*int main ()

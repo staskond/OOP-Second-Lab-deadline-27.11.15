@@ -21,8 +21,23 @@ Photo::Photo(const std::string & _roadTOFile, Date _year, Date _month, Date _Day
 
 
 
+std::ostream & operator << (std::ostream & _o, Date _d)
+{
+	_o << _d.GetYear() << '/' << _d.GetMonth() << '/' << _d.GetDay();
+	return _o;
+}
 
+std::ostream & operator << (std::ostream & _o, Person _p)
+{
+	_o << _p.GetFullName() << "\t" << _p.GetGender() << std::endl;
+	return _o;
+}
 
+std::ostream & operator << (std::ostream & _o, Place _p)
+{
+	_o << _p.GetPlaceNamed() << "\t" << _p.GetCountry() << "\t" << _p.GetCity() << std::endl;
+	return _o;
+}
 void Photo::IsValidePhoto() const
 {
 	if (m_roadToFile.empty())
@@ -43,14 +58,24 @@ Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, const std:
 }
 
 
-Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::vector<Person> _person, Place _place, const std::string & _commet)
+Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr< Person > _person , Place _place, const std::string & _commet)
 	:m_roadToFile(_roadTOFile),
 	m_date(_date),
 	m_time(_time),
 	m_place(_place),
-	m_person(_person),
 	m_commet(_commet)
 {
+	m_person.push_back(std::move(_person));
+	IsValidePhoto();
+}
+
+Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr<Person> _person, const std::string & _commet)
+	:m_roadToFile(_roadTOFile),
+	m_date(_date),
+	m_time(_time),
+	m_commet(_commet)
+{
+	m_person.push_back(std::move(_person));
 	IsValidePhoto();
 }
 

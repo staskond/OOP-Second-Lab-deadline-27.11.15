@@ -15,6 +15,7 @@ public:
 
 private:
 	friend class Photo;
+	friend class Controller;
 	const std::string m_PlaceNamed;
 	const std::string m_city;
 	const std::string m_country;

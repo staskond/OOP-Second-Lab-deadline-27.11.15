@@ -16,99 +16,10 @@ public:
 	void clearPhoto();
 	void removePhoto(Photo const & _photo);
 	bool hasPhoto(Photo const & _photo) const;
-
-
-
-	typedef std::vector< std::unique_ptr< Photo > >::const_iterator PhotoIterator;
-/*PhotoIterator chaptersBegin() const
-	{
-		return PhotoIterator(m_photo.begin());
-	}
-
-	PhotoIterator chaptersEnd() const
-	{
-		return PhotoIterator(m_photo.begin());
-	}
-
-	Photo const * findPerson(std::string const & _name) const;
-	*/
-	
-	/*https://github.com/zaychenko-sergei/oop-ki14/blob/master/lab2/demo_solution_14/employee.hpp */
-
-	//bool hasPhoto(Photo const & _Photo) const;
-	class IterablePhoto
-	{
-	public:
-
-		IterablePhoto(PhotoIterator _photoBegin, PhotoIterator _photosEnd)
-			: m_begin(_photoBegin), m_end(_photosEnd)
-		{}
-
-		PhotoIterator begin() const { return m_begin; }
-		PhotoIterator end() const { return m_end; }
-
-	private:
-
-		PhotoIterator m_begin, m_end;
-	};
-
-	PhotoIterator AlbumBegin() const;
-
-	PhotoIterator AlbumEnd() const;
-	/*
-	//https://docs.google.com/document/d/1UP9SSuE8wHZ18VnLXTET0yagEWAr3ms-xb07Xfs5l7o/edit# cтр 29 лекци€ 8
-	*
-	class PhotoIterator
-	{
-	public:
-		// —инонимы типов, нужные дл€ согласовани€ итератора и стандартной библиотеки
-	//	typedef std::input_iterator_tag iterator_category;
-	//	typedef Photo const * value_type;
-	//	typedef ptrdiff_t difference_type;
-	//	typedef Photo const ** pointer;
-	//	typedef Photo const * & reference;
-		// —иноним типа дл€ итератора реально используемого контейнера
-		typedef std::vector< std::unique_ptr< Photo > >::const_iterator BaseIterator;
-
-		//  онструктор - принимает и запоминает итератор от контейнера
-		PhotoIterator(BaseIterator _baseIt)
-			: m_baseIt(_baseIt) {}
-
-		// ќператор разыменовани€ с целью чтени€: превращаем умный указатель в обычный
-		Photo const * operator * () const
-		{
-			return (*m_baseIt).get();
-		}
-
-		// ќператор префиксного инкремента: перенаправл€ем дочернему итератору
-		PhotoIterator & operator ++ ()
-		{
-			++m_baseIt;
-			return *this;
-		}
-
-		// ќператор сравнени€ на равенство: перенаправл€ем дочернему итератору
-		bool operator == (PhotoIterator _it) const
-		{
-			return m_baseIt == _it.m_baseIt;
-		}
-
-		// ќператор сравнени€ на неравенство: перенаправл€ем дочернему итератору
-		bool operator != (PhotoIterator _it) const
-		{
-			return m_baseIt != _it.m_baseIt;
-		}
-
-	private:
-
-		// »тератор, полученный от контейнера
-		BaseIterator m_baseIt;
-	};*/
-	
-
+	const std::vector< std::unique_ptr< Photo > > & GetPhoto() const { return m_photo; };
 
 private:
-
+	friend class Application;
 	//название альбома
 	const std::string & m_AlbumName;
 	//набор фото
@@ -118,17 +29,6 @@ private:
 
 
 
-inline Album::PhotoIterator
-Album::AlbumBegin() const
-{
-	return PhotoIterator(m_photo.begin());
-}
-
-inline Album::PhotoIterator
-Album::AlbumEnd() const
-{
-	return PhotoIterator(m_photo.end());
-}
 inline size_t Album::getPhotoCount() const
 {
 	return m_photo.size();

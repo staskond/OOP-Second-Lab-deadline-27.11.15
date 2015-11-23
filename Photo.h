@@ -7,6 +7,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <memory>
 
 
 class Photo
@@ -17,30 +18,37 @@ public:
 	Photo(const std::string & _roadTOFile, Date _date, Time _time, const std::string & _commet); 
 
 	//конструктор, задающий путь к файлу, дату, время, место, личность на фотограффии и комментарий реализация №1
-	Photo(const std::string & _roadTOFile, Date _date, Time _time, std::vector <Person> _person, Place _place, const std::string & _commet);
+	Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr< Person > _person, Place _place, const std::string & _commet);
 
 	//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1	
-	Photo(const std::string & _roadTOFile, Date _date, Time _time, std::vector <Person> _person, const std::string & _commet);
+	Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr< Person > _person, const std::string & _commet);
 	//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1
 	Photo(const std::string & _roadTOFile, Date _date, Time _time, Place _place, const std::string & _commet);
 //	int SizePersonVec();
 	//Person const & getPerson(int index) const;
 	//void addPerson(Person const & _obj);
+	friend std::ostream & operator << (std::ostream &_o, Date _value);
+	friend std::ostream & operator << (std::ostream &_o, Person _value);
+	friend std::ostream & operator << (std::ostream &_o, Place _value);
 	const std::string & GetRoadToFile() const;
 	const std::string & GetCommet() const;
 	const Date & GetDate() const;
 	const Time & GetTime() const;
 	void IsValidePhoto() const;
-
+	const std::vector< std::unique_ptr< Person > >& GetPerson() const {
+		return m_person;
+	};
+	const Place GetPlace() const { return m_place; };
 private:
 	friend class Album;
-	friend class Application;
+	friend class Contriller;
 	Date m_date;
 	Time m_time;
 	const std::string m_roadToFile;
 	const std::string m_commet;
 	Place m_place;
-	std::vector < Person > m_person;
+	std::vector< std::unique_ptr< Person > > m_person;
+	
 	
 	
 };
@@ -72,6 +80,8 @@ return -1;
 //{
 	//m_person.push_back(_obj);
 //}
+
+
 
 inline const std::string & Photo::GetRoadToFile() const
 {

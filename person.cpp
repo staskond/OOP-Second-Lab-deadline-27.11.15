@@ -3,7 +3,7 @@
 //#include <stdexcept> узнать про библиотеку!
 
 //Error #A1 - This error may be when you input invalid Gender. Gender may be only Male, Fermale, fermale, male.
-
+/*
 
 Person * Person::Make(const std::string & _fullName, const std::string & _Gender)//метод фабрик, проверяет правильность введеных данных до того как они попадут в конструктор
 {
@@ -16,9 +16,11 @@ Person * Person::Make(const std::string & _fullName, const std::string & _Gender
 	}
 }
 
+*/
 
-
-Person::Person(const std::string & _fullName, const std::string & _Gender)
-	:m_FullName(_fullName), m_Gender(_Gender)
+Person::Person(const std::string & _fullName, Gender _gender)
+	:m_FullName(_fullName), m_Gender(_gender)
 {
+	
+
 };
