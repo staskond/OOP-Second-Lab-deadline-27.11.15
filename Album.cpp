@@ -16,11 +16,11 @@ Album::Album(const std::string & _AlbumName, std::initializer_list<Photo*> _phot
 		// Для добавления фото сразу оборачиваем сырые указатели в умные обертки
 		addPhoto(std::unique_ptr< Photo >(m_photo));
 }
-
+/*
 Album::~Album()
 {
 	clearPhoto();
-}
+}*/
 
 
 void Album::addPhoto(std::unique_ptr< Photo > _photo)
