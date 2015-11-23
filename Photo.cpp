@@ -91,3 +91,10 @@ Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, Place _pla
 
 
 
+int Photo::Get—onvertTheTimeInSeconds() const
+{
+	int hoursInDay{ 24 };
+	int minutesInHour{ 60 };
+	int SecondsInMinute{ 60 };
+	return ((m_date.GetYear() - 1970) * 365 + m_date.GetDay()) * hoursInDay * minutesInHour * SecondsInMinute + (m_time.GetHour() * minutesInHour * SecondsInMinute) + (m_time.GetMinutes() * SecondsInMinute);
+}

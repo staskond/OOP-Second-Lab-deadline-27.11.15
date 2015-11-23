@@ -5,7 +5,7 @@
 class Time
 {
 public:
-	Time();
+	Time() = default;
 	Time(const int _hour, const int _minutes);
 	//static Time * Make(const int _hour, const int _minutes);в реализации не хочет работать функция isValide
 	int GetHour() const;

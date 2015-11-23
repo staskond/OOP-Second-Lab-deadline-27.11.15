@@ -35,6 +35,9 @@ public:
 	const Date & GetDate() const;
 	const Time & GetTime() const;
 	void IsValidePhoto() const;
+
+	int Get—onvertTheTimeInSeconds() const;
+
 	const std::vector< std::unique_ptr< Person > >& GetPerson() const {
 		return m_person;
 	};
@@ -102,7 +105,6 @@ inline const Time & Photo::GetTime() const
 {
 	return m_time;
 }
-
 
 
 

@@ -5,8 +5,8 @@
 class Date {
 public:
 
-	Date();
-	Date(const char * _yyyyMMDD, char _sep);
+	Date() = default;
+	//Date(const char * _yyyyMMDD, char _sep);
 	Date(int _year, int _month, int _day);
 	int GetYear() const;
 	int GetMonth() const;
