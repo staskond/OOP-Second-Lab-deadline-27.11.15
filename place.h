@@ -19,7 +19,7 @@ private:
 	const std::string m_PlaceNamed;
 	const std::string m_city;
 	const std::string m_country;
-
+	
 };
 
 
