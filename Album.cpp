@@ -39,7 +39,7 @@ void Album::clearPhoto()
 
 void Album::removePhoto(Photo const & _photo)
 {
-	int nPhoto = getPhotoCount();
+	size_t nPhoto = getPhotoCount();
 	for (int i = 0; i < nPhoto; i++)
 		if (m_photo[i].get() == &_photo)
 		{// Достаточно убрать элемент из нужной позиции вектора
@@ -57,7 +57,7 @@ void Album::removePhoto(Photo const & _photo)
 // Реализация метода, подтверждающего наличие главы в книге
 bool Album::hasPhoto(Photo const & _photo) const
 {
-	int nPhoto = getPhotoCount();
+	size_t nPhoto = getPhotoCount();
 	for (int i = 0; i < nPhoto; i++)
 		// Извлекаем сырой указатель из умного при помощи метода get(),
 		// сравниваем его с образцом
@@ -66,6 +66,11 @@ bool Album::hasPhoto(Photo const & _photo) const
 
 	return false;
 }
+
+
+
+
+
 
 
 

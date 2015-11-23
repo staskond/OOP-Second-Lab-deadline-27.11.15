@@ -12,6 +12,7 @@
 class Photo
 {
 public:
+	Photo() = default;
 	//конструктор, задающий путь к файлу, дату, время и комментарий
 	Photo(const std::string & _roadTOFile, Date _date, Time _time, const std::string & _commet); 
 
@@ -31,9 +32,9 @@ public:
 	const Time & GetTime() const;
 	void IsValidePhoto() const;
 
-
 private:
-
+	friend class Album;
+	friend class Application;
 	Date m_date;
 	Time m_time;
 	const std::string m_roadToFile;

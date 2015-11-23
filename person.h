@@ -7,12 +7,13 @@ class Person
 {
 public:
 	
-	Person();
+	Person() = default;
 	const std::string & GetFullName() const;
 	const std::string & GetGender() const;
 	static Person * Make(const std::string & _fullName, const std::string & _Gender);//обьявления метода фабрик
 
 private:
+	friend class Photo;
 	Person(const std::string & _fullName, const std::string & _Gender);//закрытый конструктор, для использования метод фабрик
 	const std::string m_FullName;
 	const std::string m_Gender;

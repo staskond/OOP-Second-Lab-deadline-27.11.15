@@ -32,6 +32,7 @@ void Photo::IsValidePhoto() const
 }
 
 
+
 Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, const std::string & _commet)
 	:m_roadToFile(_roadTOFile),
 	m_date(_date),

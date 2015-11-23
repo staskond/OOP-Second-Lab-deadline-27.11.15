@@ -6,7 +6,7 @@
 class Place
 {
 public:
-	Place();
+	Place() = default;
 	Place(const std::string & _PlaceNamed, const std::string & _city, const std::string & _country);
 
 	const std::string & GetPlaceNamed() const;
@@ -14,6 +14,7 @@ public:
 	const std::string & GetCountry() const;
 
 private:
+	friend class Photo;
 	const std::string m_PlaceNamed;
 	const std::string m_city;
 	const std::string m_country;

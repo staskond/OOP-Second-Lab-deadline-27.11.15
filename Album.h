@@ -19,7 +19,6 @@ public:
 
 
 
-
 	typedef std::vector< std::unique_ptr< Photo > >::const_iterator PhotoIterator;
 /*PhotoIterator chaptersBegin() const
 	{
@@ -109,13 +108,15 @@ public:
 
 
 private:
+
 	//название альбома
-	int m_Year;
 	const std::string & m_AlbumName;
 	//набор фото
 	std::vector< std::unique_ptr< Photo > > m_photo;//храним по умным указзателям 
 	//std::vector <Photo *> m_photo;
 };
+
+
 
 inline Album::PhotoIterator
 Album::AlbumBegin() const
