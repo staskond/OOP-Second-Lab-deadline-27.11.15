@@ -11,16 +11,31 @@ public:
 	~Album();
 	Album(const Album &) = delete;
 	Album & operator = (const Album &) = delete;
-	int getPhotoCount() const;//метод возвращающий количество фото в альбоме
-	void Album::addPhoto(std::unique_ptr< Photo > _photo);//метод добовл€ющий фото в конец альбома
+	size_t getPhotoCount() const;//метод возвращающий количество фото в альбоме
+	void addPhoto(std::unique_ptr< Photo > _photo);//метод добовл€ющий фото в конец альбома
 	void clearPhoto();
 	void removePhoto(Photo const & _photo);
 	bool hasPhoto(Photo const & _photo) const;
-	typedef std::vector< std::unique_ptr< Photo > >::const_iterator PhotoIterator;
-	/*https://github.com/zaychenko-sergei/oop-ki14/blob/master/lab2/demo_solution_14/employee.hpp */
-	PhotoIterator AlbumBegin () const ;
 
-	PhotoIterator AlbumEnd () const;
+
+
+
+	typedef std::vector< std::unique_ptr< Photo > >::const_iterator PhotoIterator;
+/*PhotoIterator chaptersBegin() const
+	{
+		return PhotoIterator(m_photo.begin());
+	}
+
+	PhotoIterator chaptersEnd() const
+	{
+		return PhotoIterator(m_photo.begin());
+	}
+
+	Photo const * findPerson(std::string const & _name) const;
+	*/
+	
+	/*https://github.com/zaychenko-sergei/oop-ki14/blob/master/lab2/demo_solution_14/employee.hpp */
+
 	//bool hasPhoto(Photo const & _Photo) const;
 	class IterablePhoto
 	{
@@ -37,9 +52,14 @@ public:
 
 		PhotoIterator m_begin, m_end;
 	};
-	
+
+	PhotoIterator AlbumBegin() const;
+
+	PhotoIterator AlbumEnd() const;
+	/*
 	//https://docs.google.com/document/d/1UP9SSuE8wHZ18VnLXTET0yagEWAr3ms-xb07Xfs5l7o/edit# cтр 29 лекци€ 8
-	/*class PhotoIterator
+	*
+	class PhotoIterator
 	{
 	public:
 		// —инонимы типов, нужные дл€ согласовани€ итератора и стандартной библиотеки
@@ -85,10 +105,12 @@ public:
 		// »тератор, полученный от контейнера
 		BaseIterator m_baseIt;
 	};*/
+	
 
 
 private:
 	//название альбома
+	int m_Year;
 	const std::string & m_AlbumName;
 	//набор фото
 	std::vector< std::unique_ptr< Photo > > m_photo;//храним по умным указзател€м 
@@ -106,11 +128,13 @@ Album::AlbumEnd() const
 {
 	return PhotoIterator(m_photo.end());
 }
-
-inline int Album::getPhotoCount() const
+inline size_t Album::getPhotoCount() const
 {
 	return m_photo.size();
 }
+
+
+
 #endif // _ALBUM_HPP_
 
 
