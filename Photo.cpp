@@ -46,6 +46,16 @@ void Photo::IsValidePhoto() const
 		throw std::logic_error("Error: Commet is empty.");
 }
 
+void Photo::PrintTime()
+{
+	std::cout << "\t" <<m_time.GetHour() << ":" << m_time.GetMinutes() << std::endl;
+}
+
+void Photo::PrintDate()
+{
+	std::cout << m_date.GetYear() << "/" << m_date.GetMonth() << "/" << m_date.GetDay();
+}
+
 
 
 Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, const std::string & _commet)

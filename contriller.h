@@ -10,6 +10,10 @@ public:
 	void addAlbum(Album & _album);
 	void printAllPhotosInTheLastYear();
 	int OneYearInTheSeconds();
+	void AlbumWithoutPeople();
+	void AlbumWithPeople();
+	void printPhotoSeasonal();
+
 
 private:
 	std::vector< std::unique_ptr< Album> > m_albums;

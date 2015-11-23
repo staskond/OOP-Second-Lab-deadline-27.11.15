@@ -16,6 +16,7 @@ public:
 	void clearPhoto();
 	void removePhoto(Photo const & _photo);
 	bool hasPhoto(Photo const & _photo) const;
+	const std::string & GetAlbumName() const;
 	const std::vector< std::unique_ptr< Photo > > & GetPhoto() const { return m_photo; };
 
 private:
@@ -27,6 +28,10 @@ private:
 	//std::vector <Photo *> m_photo;
 };
 
+inline const std::string & Album::GetAlbumName() const
+{
+	return m_AlbumName;
+}
 
 
 inline size_t Album::getPhotoCount() const

@@ -74,5 +74,6 @@ bool Album::hasPhoto(Photo const & _photo) const
 
 
 
+
 //большая часть реализации подобна до 27 стр лк 8
 //тест, пример стр 27 лк 8
