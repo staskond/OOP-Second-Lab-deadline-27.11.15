@@ -1,6 +1,8 @@
 
 #include "contriller.h"
 #include <ctime>
+#include <algorithm>
+#include <unordered_map>
 //метод добавления нового альбома
 void Controller::addAlbum(Album & _album)
 {
@@ -74,9 +76,17 @@ void Controller::AlbumWithPeople()
 	}
 }
 
-
+void Controller::printSeason(std::vector <std::string > _value)
+{
+	if (!_value.empty())
+	{
+		for (auto pvector : _value)
+			std::cout << pvector << std::endl;
+	}
+}
 void Controller::printPhotoSeasonal()
 {
+	
 	std::vector < std::string > m_winter;
 	std::vector < std::string > m_spring;
 	std::vector < std::string > m_summer;
@@ -101,85 +111,110 @@ void Controller::printPhotoSeasonal()
 				m_autumn.push_back(pPhoto->GetRoadToFile());
 			else break;
 		}
-	//пытался закинуть в функцию, но там была ошибка, уже было влом разбиратся 
-	if (!m_winter.empty())
-	{
-		std::cout << "Photos made in  winter: " << std::endl;
-		for (auto pwinter : m_winter)
-			std::cout << pwinter << std::endl;
-	}
-
-	if (!m_autumn.empty())
-	{
-		std::cout << "Photos made in  winter: " << std::endl;
-		for (auto pautumn : m_autumn)
-			std::cout << pautumn << std::endl;
-	}
-
-	if (!m_spring.empty())
-	{
-		std::cout << "Photos made in spring: " << std::endl;
-		for (auto pspring : m_spring)
-			std::cout << pspring << std::endl;
-	}
-
-	if (!m_summer.empty())
-	{
-		std::cout << "Photos made in spring: " << std::endl;
-		for (auto psummer : m_summer)
-			std::cout << psummer << std::endl;
-	}
+	std::cout << "Photos made in  winter: " << std::endl;
+	printSeason(m_winter);
+	std::cout << "Photos made in autumn: " << std::endl;
+	printSeason(m_autumn);
+	std::cout << "Photos made in spring: " << std::endl;
+	printSeason(m_spring);
+	std::cout << "Photos made in summer: " << std::endl;
+	printSeason(m_summer);
+	
 }
 
-
-/*
-void Application::printPhotosByseasons()
+void Controller::printTheFiveMostPopularСities()
 {
-	std::vector<std::string> summer, autumn, winter, spring;
+	struct HelpTempStruct
+	{
+		std::string m_city;
+		int count;
 
-	for (auto const & a : albums) {
-		for (auto const & photo : a->m_photos)
+	};
+
+	std::vector <HelpTempStruct> m_cities;
+	for (auto const & pAlbum : m_albums)
+	{
+		for (auto const & pPhoto : pAlbum->GetPhoto())
 		{
-			if (photo->getTime().getMonth() == 12 || photo->getTime().getMonth() == 1 ||
-				photo->getTime().getMonth() == 2)
-				winter.push_back(photo->getPath());
+			if (m_cities.empty())
+			{
+				HelpTempStruct newCity{ pPhoto->GetPlace().GetCity(), 1};
+				m_cities.push_back(newCity);
+			}
+			//std::vector<HelpTempStruct>::iterator
+			auto begincopy = m_cities.begin();
+			if (m_cities.begin()->m_city == pPhoto->GetPlace().GetCity())
+			{
+				m_cities.begin()->count++;
+				break;
+			}
+			begincopy++;
+		};
+	};
 
-			else if (photo->getTime().getMonth() > 2 && photo->getTime().getMonth() < 6)
-				spring.push_back(photo->getPath());
+	std::sort(m_cities.begin(), m_cities.end(),
+		[](HelpTempStruct _first, HelpTempStruct _second)
+	{
+		return (_first.count < _second.count);
+	});
 
-			else if (photo->getTime().getMonth() > 5 && photo->getTime().getMonth() < 9)
-				summer.push_back(photo->getPath());
+		std::cout << "The five most popular cities: " << std::endl;
+		for (auto it = m_cities.begin(); it < m_cities.begin() + 5; it++)
+			std::cout << it->m_city << std::endl;
+}
 
-			else if (photo->getTime().getMonth() > 8 && photo->getTime().getMonth() < 12)
-				autumn.push_back(photo->getPath());
+void Controller::printTheFiveMostPopularPeoples()
+{
+	struct HelpTempStruct
+	{
+		std::string m_name;
+		int m_count;
+	};
+
+	std::vector<HelpTempStruct> m_persons;
+	for (auto const & pAlbum : m_albums)
+	{
+		for (auto const & pPhoto : pAlbum->GetPhoto())
+			std::for_each(pPhoto->GetPerson().begin(), pPhoto->GetPerson().end(), [&](auto &_person)//std::unique_ptr <Person> & _person должно было быть, но в таком варианте не компилелось 
+		{
+			if (m_persons.empty())
+			{
+				HelpTempStruct newPerson{ _person->GetFullName(), 1 };
+				m_persons.push_back(newPerson);
+			}
+			else {
+				std::vector<HelpTempStruct>::iterator begincopy = m_persons.begin();
+				while (m_persons.begin() == m_persons.end())
+				{
+					if (m_persons.begin()->m_name == _person->GetFullName())
+					{
+						m_persons.begin()->m_count++;
+						break;
+					}
+				}
+			}
+		});
+	}
+		std::sort(m_persons.begin(), m_persons.end(), [](HelpTempStruct _first, HelpTempStruct _second)
+		{
+			return _first.m_count < _second.m_count;
 		}
-	}
-	if (!winter.empty())
-	{
-		std::cout << "Winter photos:\n";
-		for (auto win : winter)
-			std::cout << '\t' << win << '\n';
-	}
+		);
 
-	if (!spring.empty())
-	{
-		std::cout << "Spring photos:\n";
-		for (auto spr : spring)
-			std::cout << '\t' << spr << '\n';
-	}
+		std::cout << "The five most popular peoples: " << std::endl;
+		for (auto it = m_persons.begin(); it != m_persons.begin() + 5; it++)
+			std::cout << it->m_name << std::endl;;
+}
 
-	if (!summer.empty())
+void Controller::printAllFriends()
+{
+	struct HelpTempStruct
 	{
-		std::cout << "Summer photos:\n";
-		for (auto sum : summer)
-			std::cout << '\t' << sum << '\n';
-	}
+		std::string m_name;
+		std::vector <std::string > m_PhotoWithPerson;
+	};
 
-	if (!autumn.empty())
-	{
-		std::cout << "Autumn photos:\n";
-		for (auto aut : autumn)
-			std::cout << '\t' << aut << '\n';
-	}
-}*/
+	std::vector <HelpTempStruct> m_persons;
+}
+
 
