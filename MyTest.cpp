@@ -10,6 +10,9 @@ int main() {
 	Album testAlbum("TestAlbum");
 	testAlbum.addPhoto(std::make_unique< Photo >("D:\\ ", Date(1997, 10, 10), Time(13, 13), Place("AAA", "BBB", "CCC"), "Я в москве"));
 	testAlbum.addPhoto(std::make_unique< Photo >("D:\\ ", Date(1995, 10, 10), Time(13, 13), std::make_unique <Person>("naklme", Person::Gender::Male), "i1m "));
+	Test1.addPerson(std::make_unique <Person>("naksdsalme", Person::Gender::Male));
+	//testAlbum.GetPhoto()->addPerson(std::make_unique <Person>("naksdsasdslme", Person::Gender::Male));
+
 	Album testAlbum2("TestAlbum2");
 	Place testplace("sdfsdf", "sdfsdf", "sdfsdf");
 	for (auto const & photo : testAlbum.GetPhoto()) {
@@ -21,6 +24,13 @@ int main() {
 	{
 		std::cout << photo->GetPlace() << std::endl;
 	}
+
+//	for (auto const & pPhoto : testAlbum.GetPhoto())
+//	{
+//		for(auto const & pPerson: pPhoto->GetPerson())
+			
+	//		pPhoto->GetPerson().push_back()
+//	}
 
 		system("pause >> void");
 		//Photo(const std::string & _roadTOFile, Date _date, Time _time, std::vector <Person> _person, const std::string & _commet);

@@ -26,7 +26,7 @@ public:
 	Photo(const std::string & _roadTOFile, Date _date, Time _time, Place _place, const std::string & _commet);
 //	int SizePersonVec();
 	//Person const & getPerson(int index) const;
-	//void addPerson(Person const & _obj);
+	//void addPerson(std::unique_ptr< Person > _obj, std::string & _roadToPhoto);
 	friend std::ostream & operator << (std::ostream &_o, Date _value);
 	friend std::ostream & operator << (std::ostream &_o, Person _value);
 	friend std::ostream & operator << (std::ostream &_o, Place _value);
@@ -37,6 +37,7 @@ public:
 	void IsValidePhoto() const;
 	void PrintTime();
 	void PrintDate();
+	void addPerson(std::unique_ptr< Person > _person);
 	int Get—onvertTheTimeInSeconds() const;
 
 	const std::vector< std::unique_ptr< Person > >& GetPerson() const {

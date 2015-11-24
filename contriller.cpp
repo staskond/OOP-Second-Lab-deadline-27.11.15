@@ -8,6 +8,20 @@ void Controller::addAlbum(Album & _album)
 {
 m_albums.push_back(std::make_unique<Album>(std::move(_album)));
 }
+/*
+void Controller::addPerson(Person & _person, std::string & _roadToFile)
+{
+	for(auto const & pAlbum: m_albums)
+		for (auto const & pPhoto : pAlbum->GetPhoto())
+		{
+			if (pPhoto->GetRoadToFile() == _roadToFile)
+			{
+				for (auto const & pPerson : pPhoto->GetPerson())
+					pPerson->m_FullName().push_beck(_person.GetFullName());
+			}
+		}
+
+}*/
 //‚ÓÁ‚‡˘‡ÂÚ Ó‰ËÌ „Ó‰ ‚ ÒÂÍÛÌ‰‡ı
 int Controller::OneYearInTheSeconds()
 {
@@ -76,6 +90,8 @@ void Controller::AlbumWithPeople()
 	}
 }
 
+
+
 void Controller::printSeason(std::vector <std::string > _value)
 {
 	if (!_value.empty())
@@ -138,8 +154,8 @@ void Controller::printTheFiveMostPopular—ities()
 		{
 			if (m_cities.empty())
 			{
-				HelpTempStruct newCity{ pPhoto->GetPlace().GetCity(), 1};
-				m_cities.push_back(newCity);
+				HelpTempStruct newTempCity{ pPhoto->GetPlace().GetCity(), 1};
+				m_cities.push_back(newTempCity);
 			}
 			//std::vector<HelpTempStruct>::iterator
 			auto begincopy = m_cities.begin();
@@ -179,8 +195,8 @@ void Controller::printTheFiveMostPopularPeoples()
 		{
 			if (m_persons.empty())
 			{
-				HelpTempStruct newPerson{ _person->GetFullName(), 1 };
-				m_persons.push_back(newPerson);
+				HelpTempStruct newTempPerson{ _person->GetFullName(), 1 };
+				m_persons.push_back(newTempPerson);
 			}
 			else {
 				std::vector<HelpTempStruct>::iterator begincopy = m_persons.begin();
@@ -206,7 +222,8 @@ void Controller::printTheFiveMostPopularPeoples()
 			std::cout << it->m_name << std::endl;;
 }
 
-void Controller::printAllFriends()
+
+void Controller::FindandPrintPhotoWithAllFrineds()
 {
 	struct HelpTempStruct
 	{
@@ -215,6 +232,68 @@ void Controller::printAllFriends()
 	};
 
 	std::vector <HelpTempStruct> m_persons;
+	for (auto const & pAlbum : m_albums)
+	{
+		for (auto const & pPhoto : pAlbum->GetPhoto())
+		{
+			for (auto const & pPerson : pPhoto->GetPerson())
+			{
+				if (m_persons.empty())
+				{
+					HelpTempStruct newTempPerson;
+					newTempPerson.m_name = pPerson->GetFullName();
+					newTempPerson.m_PhotoWithPerson.push_back(pPhoto->GetRoadToFile());
+					m_persons.push_back(newTempPerson);
+				}
+				else {
+					while (m_persons.begin() != m_persons.end())
+					{
+						if (m_persons.begin()->m_name == pPerson->GetFullName())
+						{
+							m_persons.begin()->m_PhotoWithPerson.push_back(pPhoto->GetRoadToFile());
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	struct PairFriends
+	{
+		std::string m_firstFriend;
+		std::string m_secondFriend;
+	};
+	std::vector<PairFriends> m_vecFriends;
+	for (int i = 0; i < m_persons.size() - 1; i++)
+	{
+		int count{ 0 };
+		for (int j = i + 1; j < m_persons.size(); j++)
+		{
+			for (auto pFirstFriend : m_persons[i].m_PhotoWithPerson)
+			{
+				for (auto pSecondFriend : m_persons[j].m_PhotoWithPerson)
+				{
+					if (pFirstFriend == pSecondFriend)
+						count++;
+					if (count > 3)
+					{
+						PairFriends newTempPair{ m_persons[i].m_name, m_persons[j].m_name };
+						m_vecFriends.push_back(newTempPair);
+						count = -1;
+						break;
+					}
+				}
+			}
+		}
+	}
+	if (!m_vecFriends.empty())
+	{
+		std::cout << "Friends:(Two men captured more than three times in the photos: )" << std::endl;
+		for (auto PairFriends : m_vecFriends)
+			std::cout << PairFriends.m_firstFriend << " friends with " << PairFriends.m_secondFriend << std::endl;
+
+	}
 }
+
 
 

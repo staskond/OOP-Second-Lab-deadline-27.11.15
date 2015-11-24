@@ -56,6 +56,12 @@ void Photo::PrintDate()
 	std::cout << m_date.GetYear() << "/" << m_date.GetMonth() << "/" << m_date.GetDay();
 }
 
+void Photo::addPerson(std::unique_ptr<Person> _person)
+{
+	m_person.push_back(std::move(_person));
+}
+
+
 
 
 Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, const std::string & _commet)
@@ -79,6 +85,7 @@ Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::uniqu
 	IsValidePhoto();
 }
 
+
 Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr<Person> _person, const std::string & _commet)
 	:m_roadToFile(_roadTOFile),
 	m_date(_date),
@@ -98,6 +105,7 @@ Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, Place _pla
 {
 	IsValidePhoto();
 }
+
 
 
 
