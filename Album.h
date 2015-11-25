@@ -11,6 +11,8 @@ public:
 	//~Album();
 	//Album(const Album &) = delete;
 	//Album & operator = (const Album &) = delete;
+//	friend std::ostream & operator << (std::ostream &_o, Album _value);
+	void PrintAlbumName();
 	size_t getPhotoCount() const;//метод возвращающий количество фото в альбоме
 	void addPhoto(std::unique_ptr< Photo > _photo);//метод добовл€ющий фото в конец альбома
 	void addPhoto(Photo &_photo);

@@ -47,7 +47,7 @@ void Controller::printAllPhotosInTheLastYear()
 			size_t timePhotoInSeconds = pPhoto->Get—onvertTheTimeInSeconds();
 			if ((currentTime - timePhotoInSeconds) < OneYearInTheSeconds())
 			{
-				std::cout << pPhoto->GetRoadToFile() << std::endl;;
+				std::cout << "\t"<< pPhoto->GetRoadToFile();
 				pPhoto->PrintDate();
 				pPhoto->PrintTime();
 				
@@ -58,41 +58,42 @@ void Controller::printAllPhotosInTheLastYear()
 void Controller::AlbumWithoutPeople()
 {
 	std::cout << "Albums where are no people: " << std::endl;
-	bool isEmpty = true;
+	
 	for (auto const & pAlbum : m_albums)
 	{
+		bool Empty = false;
 		for (auto const & pPhoto : pAlbum->GetPhoto())
 		{
 			if (pPhoto->GetPerson().empty())
 			{
-				isEmpty = false;
-				break;
-				
+				Empty = true;
+				break;			
 			}
 		}
-		if (!isEmpty)
-			std::cout << pAlbum->GetAlbumName() << std::endl;
+		if (Empty)
+			std::cout << "\t"<< pAlbum->GetAlbumName()<< std::endl;
 	}
 }
 
 void Controller::AlbumWithPeople()
 {
 	std::cout << "Albums with people: " << std::endl;
-	bool isEmpty = true ;
+
 	for (auto const & pAlbum : m_albums)
 	{
+		bool isEmpty = false;
 		for (auto const & pPhoto : pAlbum->GetPhoto())
 		{
-			if (!pPhoto->GetPerson().empty())
+			if (pPhoto->GetPerson().empty())
 			{
-				isEmpty = false;
+				isEmpty = true;
 				break;
 				
 			}
 		}		
 
 		if (!isEmpty)
-			std::cout << pAlbum->GetAlbumName() << std::endl;
+			pAlbum->PrintAlbumName();
 	}
 }
 
@@ -150,6 +151,7 @@ void Controller::printPhotoSeasonal()
 
 void Controller::printTheFiveMostPopular—ities()
 {
+
 	struct HelpTempStruct
 	{
 		std::string m_city;
@@ -169,13 +171,22 @@ void Controller::printTheFiveMostPopular—ities()
 			}
 			else {
 				//std::vector<HelpTempStruct>::iterator
+				bool TempBool = false;
 				auto begincopy = m_cities.begin();
-				if (m_cities.begin()->m_city == pPhoto->GetPlace().GetCity())
+				while (begincopy != m_cities.end())
 				{
-					m_cities.begin()->count++;
-					break;
+					if (begincopy->m_city == pPhoto->GetPlace().GetCity())
+					{
+						begincopy->count++;
+						TempBool = true;
+						break;
+					}
+					begincopy++;
 				}
-			//	begincopy++;
+				if(!TempBool){
+					HelpTempStruct newTempCity{ pPhoto->GetPlace().GetCity(), 1 };
+					m_cities.push_back(newTempCity);
+				}
 			}
 		};
 	};
@@ -186,13 +197,20 @@ void Controller::printTheFiveMostPopular—ities()
 		return (_first.count < _second.count);
 	});
 
-		std::cout << "The five most popular cities: " << std::endl;
+	
+	std::cout << "The five most popular cities: " << std::endl;
 		for (auto it = m_cities.begin(); it < m_cities.begin() + 5; it++)
 			std::cout << "\t"<< it->m_city << std::endl;
+	/*for (auto const & pPerson : m_cities)
+	{
+		std::cout << "\t" << m_cities.begin()->m_city<< std::endl;
+	}*/
+
 }
 
 void Controller::printTheFiveMostPopularPeoples()
 {
+
 	struct HelpTempStruct
 	{
 		std::string m_name;
@@ -211,30 +229,48 @@ void Controller::printTheFiveMostPopularPeoples()
 				m_persons.push_back(newTempPerson);
 			}
 			else {
-				std::vector<HelpTempStruct>::iterator begincopy = m_persons.begin();
-				while (m_persons.begin() == m_persons.end())
+				bool namePhoto = false;
+					std::vector<HelpTempStruct>::iterator begincopy = m_persons.begin();
+				while (begincopy == m_persons.end())
 				{
-					if (m_persons.begin()->m_name == _person->GetFullName())
+			//	for (auto it = m_persons.begin(); it < m_persons.end(); it++){
+					if (begincopy->m_name == _person->GetFullName())
 					{
-						m_persons.begin()->m_count++;
+						//begincopy->m_count++;
+						begincopy->m_count++;
+						namePhoto = true;
 						break;
+				//	}
+				}
+					begincopy++;
 					}
+				if (!namePhoto)
+				{
+					HelpTempStruct newTempPerson{ _person->GetFullName(), 1 };
+					m_persons.push_back(newTempPerson);
+					
 				}
 			}
+
 		});
 	}
-		std::sort(m_persons.begin(), m_persons.end(), [](HelpTempStruct _first, HelpTempStruct _second)
-		{
-			return _first.m_count < _second.m_count;
-		}
-		);
+	std::sort(m_persons.begin(), m_persons.end(), [](HelpTempStruct _first, HelpTempStruct _second)
+	{
+		return _first.m_count < _second.m_count;
+	}
+	);
 
 		std::cout << "The five most popular peoples: " << std::endl;
 		for (auto it = m_persons.begin(); it != m_persons.begin() + 5; it++)
-			std::cout << "\t" << it->m_name << std::endl;;
+			std::cout << "\t" << it->m_name << std::endl;
+	/*auto it = m_persons.begin() + 5;
+	for (auto const & pPerson : m_persons)
+	{
+	  if(m_persons.begin() != it)
+		  std::cout << "\t" << it->m_name << std::endl;
+	}*/
+
 }
-
-
 void Controller::FindandPrintPhotoWithAllFrineds()
 {
 	struct HelpTempStruct
@@ -258,18 +294,29 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 					m_persons.push_back(newTempPerson);
 				}
 				else {
-					while (m_persons.begin() != m_persons.end())
+					bool HelpBoolPerson = false;
+					auto begincopy = m_persons.begin();
+					while (begincopy != m_persons.end())
 					{
-						if (m_persons.begin()->m_name == pPerson->GetFullName())
+						if (begincopy->m_name == pPerson->GetFullName())
 						{
-							m_persons.begin()->m_PhotoWithPerson.push_back(pPhoto->GetRoadToFile());
+							begincopy->m_PhotoWithPerson.push_back(pPhoto->GetRoadToFile());
+							HelpBoolPerson = true;
 							break;
 						}
+						begincopy++;
+					}
+					if(!HelpBoolPerson){
+						HelpTempStruct newTempPerson;
+						newTempPerson.m_name = pPerson->GetFullName();
+						newTempPerson.m_PhotoWithPerson.push_back(pPhoto->GetRoadToFile());
+						m_persons.push_back(newTempPerson);
 					}
 				}
 			}
 		}
 	}
+
 	struct PairFriends
 	{
 		std::string m_firstFriend;
@@ -278,9 +325,9 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 	std::vector<PairFriends> m_vecFriends;
 	for (int i = 0; i < m_persons.size() - 1; i++)
 	{
-		int count{ 0 };
 		for (int j = i + 1; j < m_persons.size(); j++)
 		{
+			int count{ 0 };
 			for (auto pFirstFriend : m_persons[i].m_PhotoWithPerson)
 			{
 				for (auto pSecondFriend : m_persons[j].m_PhotoWithPerson)
@@ -291,7 +338,7 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 					{
 						PairFriends newTempPair{ m_persons[i].m_name, m_persons[j].m_name };
 						m_vecFriends.push_back(newTempPair);
-						count = 0;
+						count = -1;
 						break;
 					}
 				}

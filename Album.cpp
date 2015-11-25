@@ -2,6 +2,11 @@
 
 
 
+void Album::PrintAlbumName()
+{
+	std::cout << m_AlbumName << std::endl;
+}
+
 
 Album::Album(const std::string & _AlbumName)
 	:m_AlbumName(_AlbumName)

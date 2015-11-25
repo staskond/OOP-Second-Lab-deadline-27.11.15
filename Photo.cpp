@@ -33,11 +33,6 @@ std::ostream & operator << (std::ostream & _o, Person _p)
 	return _o;
 }
 
-std::ostream & operator << (std::ostream & _o, Place _p)
-{
-	_o << _p.GetPlaceNamed() << "\t" << _p.GetCountry() << "\t" << _p.GetCity() << std::endl;
-	return _o;
-}
 
 void Photo::IsValidePhoto() const
 {
@@ -54,7 +49,7 @@ void Photo::PrintTime()
 
 void Photo::PrintDate()
 {
-	std::cout << m_date.GetYear() << "/" << m_date.GetMonth() << "/" << m_date.GetDay();
+	std::cout << "\t\t"<< m_date.GetYear() << "." << m_date.GetMonth() << "." << m_date.GetDay();
 }
 
 void Photo::addPerson(const std::string & _name, Person::Gender _gender)
