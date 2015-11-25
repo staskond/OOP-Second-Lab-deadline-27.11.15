@@ -7,7 +7,7 @@ class Controller
 {
 public:
 	//void addPerson(Person & _person, std::string & _roadToFile);
-
+	//
 	void printSeason(std::vector <std::string > _value);
 	void addAlbum(Album & _album);
 	void printAllPhotosInTheLastYear();
