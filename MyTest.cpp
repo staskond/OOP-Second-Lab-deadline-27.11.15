@@ -10,10 +10,10 @@ int main() {
 //Photo Test1("D:\\ ", Date(1995, 10, 10), Time(13, 13), std::make_unique <Person>("naklme", Person::Gender::Male), "i1m ");
 //Photo Test2("D:\\ ", Date(1995, 10, 10), Time(13, 13), std::make_unique <Person>("naklme", Person::Gender::Male), "i1m ");
 
-	Album testAlbum("TestAlbum");
-	testAlbum.addPhoto(std::make_unique< Photo >("D:\\ ", Date(1997, 10, 10), Time(13, 13), Place("AAA", "BBB", "CCC"), "ﬂ ‚ ÏÓÒÍ‚Â"));
+//	Album testAlbum("TestAlbum");
+//	testAlbum.addPhoto(std::make_unique< Photo >("D:\\ ", Date(1997, 10, 10), Time(13, 13), Place("AAA", "BBB", "CCC"), "ﬂ ‚ ÏÓÒÍ‚Â"));
 
-	testAlbum.addPhoto(std::make_unique< Photo > ("D:\\ ", Date(1995, 10, 10), Time(13, 13), std::make_unique <Person>("naklme", Person::Gender::Male), "i1m "));
+	//testAlbum.addPhoto(std::make_unique< Photo > ("D:\\ ", Date(1995, 10, 10), Time(13, 13), std::make_unique <Person>("naklme", Person::Gender::Male), "i1m "));
 
 //	for (auto const & pPhoto : testAlbum.GetPhoto())
 //	{
@@ -41,7 +41,7 @@ int main() {
 	//p2 Julia, Alina, Andrey        // Andrey - Julia :2    Andrey-Alina :1     Alina-Julia:1
 	//p3 Julia, Kiril, Andrey        //Andrey - Julia:3      Julia-Kiril:1      Kiril-Andrey:1
 	//p4 Andrey - Alina:2/*
-	/*
+	
 	Photo PhotoA1Test1("D:\\AlbumFirst\\phototest1.jpg", Date(2015, 1, 10), Time(14, 07), std::make_unique <Person>("Andrey", Person::Gender::Male), Place("Mountain", "Dombai", "Russia"), "ŒÚ‰˚ı 2015");
 	Photo PhotoA1Test2("D:\\AlbumFirst\\phototest2.jpg", Date(2015, 10, 23), Time(23, 16), std::make_unique <Person>("Alina", Person::Gender::Fermale), "ŒÚ‰˚ı 2015");
 	Photo PhotoA1Test3("D:\\AlbumFirst\\phototest3.jpg", Date(2015, 10, 11), Time(21, 9), std::make_unique <Person>("Julia", Person::Gender::Fermale), Place("Kreml", "Moscow", "Russia"), "ŒÚ‰˚ı 2015");
@@ -88,141 +88,156 @@ int main() {
 	Photo PhotoA4Test10("D:\\AlbumFourth\\phototest4.jpg", Date(2015, 5, 23), Time(11, 11), "ŒÚ‰˚ı 2015");
 	//"Kristina", "Masha", "Bernard", "Bonifaciy", "Lionel" "Benedict", "Barbara", "Beatrisa", 
 	
-	PhotoA1Test1.addPerson(std::make_unique<Person>("Sveta", Person::Gender::Fermale));
-	PhotoA1Test1.addPerson(std::make_unique<Person>("Julia", Person::Gender::Fermale));
+	PhotoA1Test1.addPerson("Sveta", Person::Gender::Fermale);
+	PhotoA1Test1.addPerson("Julia", Person::Gender::Fermale);
 
-	PhotoA2Test2.addPerson(std::make_unique<Person>("Julia", Person::Gender::Fermale));
-	PhotoA2Test2.addPerson(std::make_unique<Person>("Andrey", Person::Gender::Male));
+	PhotoA2Test2.addPerson("Julia", Person::Gender::Fermale);
+	PhotoA2Test2.addPerson("Andrey", Person::Gender::Male);
 
-	PhotoA1Test3.addPerson(std::make_unique<Person>("Kiril", Person::Gender::Male));
-	PhotoA1Test3.addPerson(std::make_unique<Person>("Andrey", Person::Gender::Male));
+	PhotoA1Test3.addPerson("Kiril", Person::Gender::Male);
+	PhotoA1Test3.addPerson("Andrey", Person::Gender::Male);
 
-	PhotoA1Test4.addPerson(std::make_unique<Person>("Stas", Person::Gender::Male));
-	PhotoA1Test4.addPerson(std::make_unique<Person>("Andrey", Person::Gender::Male));
+	PhotoA1Test4.addPerson("Stas", Person::Gender::Male);
+	PhotoA1Test4.addPerson("Andrey", Person::Gender::Male);
 
-	PhotoA1Test5.addPerson(std::make_unique<Person>("Stas", Person::Gender::Male));
-	PhotoA1Test5.addPerson(std::make_unique<Person>("Sveta", Person::Gender::Fermale));
+	PhotoA1Test5.addPerson("Stas", Person::Gender::Male);
+	PhotoA1Test5.addPerson("Sveta", Person::Gender::Fermale);
 
-	PhotoA1Test6.addPerson(std::make_unique<Person>("Julia", Person::Gender::Fermale));
-	PhotoA1Test6.addPerson(std::make_unique<Person>("Nika", Person::Gender::Fermale));
+	PhotoA1Test6.addPerson("Julia", Person::Gender::Fermale);
+	PhotoA1Test6.addPerson("Nika", Person::Gender::Fermale);
 
-	PhotoA1Test7.addPerson(std::make_unique<Person>("Kiril", Person::Gender::Male));
-	PhotoA1Test7.addPerson(std::make_unique<Person>("Nika", Person::Gender::Fermale));
+	PhotoA1Test7.addPerson("Kiril", Person::Gender::Male);
+	PhotoA1Test7.addPerson("Nika", Person::Gender::Fermale);
 
-	PhotoA1Test8.addPerson(std::make_unique<Person>("Julia", Person::Gender::Fermale));
-	PhotoA1Test8.addPerson(std::make_unique<Person>("Andrey", Person::Gender::Male));
+	PhotoA1Test8.addPerson("Julia", Person::Gender::Fermale);
+	PhotoA1Test8.addPerson("Andrey", Person::Gender::Male);
 
-	PhotoA1Test9.addPerson(std::make_unique<Person>("Vlad", Person::Gender::Male));
-	PhotoA1Test9.addPerson(std::make_unique<Person>("Akim", Person::Gender::Male));
+	PhotoA1Test9.addPerson("Vlad", Person::Gender::Male);
+	PhotoA1Test9.addPerson("Akim", Person::Gender::Male);
 
-	PhotoA1Test10.addPerson(std::make_unique<Person>("Vlad", Person::Gender::Male));
-	PhotoA1Test10.addPerson(std::make_unique<Person>("Akim", Person::Gender::Male));
+	PhotoA1Test10.addPerson("Vlad", Person::Gender::Male);
+	PhotoA1Test10.addPerson("Akim", Person::Gender::Male);
 
 	//"Kristina", "Masha", "Bernard", "Bonifaciy", "Lionel" "Benedict", "Barbara", "Beatrisa",
-	PhotoA2Test1.addPerson(std::make_unique<Person>("Kristina", Person::Gender::Fermale));
-	PhotoA2Test1.addPerson(std::make_unique<Person>("Masha", Person::Gender::Fermale));
+	PhotoA2Test1.addPerson("Kristina", Person::Gender::Fermale);
+	PhotoA2Test1.addPerson("Masha", Person::Gender::Fermale);
 
-	PhotoA2Test3.addPerson(std::make_unique<Person>("Kiril", Person::Gender::Male));
-	PhotoA2Test3.addPerson(std::make_unique<Person>("Bernard", Person::Gender::Male));
+	PhotoA2Test3.addPerson("Kiril", Person::Gender::Male);
+	PhotoA2Test3.addPerson("Bernard", Person::Gender::Male);
 
-	PhotoA2Test4.addPerson(std::make_unique<Person>("Stas", Person::Gender::Male));
-	PhotoA2Test4.addPerson(std::make_unique<Person>("Beatrisa", Person::Gender::Fermale));
+	PhotoA2Test4.addPerson("Stas", Person::Gender::Male);
+	PhotoA2Test4.addPerson("Beatrisa", Person::Gender::Fermale);
 
-	PhotoA2Test5.addPerson(std::make_unique<Person>("Stas", Person::Gender::Male));
-	PhotoA2Test5.addPerson(std::make_unique<Person>("Beatrisa", Person::Gender::Fermale));
+	PhotoA2Test5.addPerson("Stas", Person::Gender::Male);
+	PhotoA2Test5.addPerson("Beatrisa", Person::Gender::Fermale);
 
-	PhotoA2Test6.addPerson(std::make_unique<Person>("Bernard", Person::Gender::Male));
-	PhotoA2Test6.addPerson(std::make_unique<Person>("Benedict", Person::Gender::Male));
+	PhotoA2Test6.addPerson("Bernard", Person::Gender::Male);
+	PhotoA2Test6.addPerson("Benedict", Person::Gender::Male);
 
-	PhotoA2Test7.addPerson(std::make_unique<Person>("Kristina", Person::Gender::Fermale));
-	PhotoA2Test7.addPerson(std::make_unique<Person>("Masha", Person::Gender::Fermale));
+	PhotoA2Test7.addPerson("Kristina", Person::Gender::Fermale);
+	PhotoA2Test7.addPerson("Masha", Person::Gender::Fermale);
 
-	PhotoA2Test9.addPerson(std::make_unique<Person>("Vlad", Person::Gender::Male));
-	PhotoA2Test9.addPerson(std::make_unique<Person>("Ivan", Person::Gender::Male));
+	PhotoA2Test9.addPerson("Vlad", Person::Gender::Male);
+	PhotoA2Test9.addPerson("Ivan", Person::Gender::Male);
 
-	PhotoA2Test10.addPerson(std::make_unique<Person>("Ivan", Person::Gender::Male));
-	PhotoA2Test10.addPerson(std::make_unique<Person>("Akim", Person::Gender::Male));
+	PhotoA2Test10.addPerson("Ivan", Person::Gender::Male);
+	PhotoA2Test10.addPerson("Akim", Person::Gender::Male);
 
 	//
-	PhotoA2Test1.addPerson(std::make_unique<Person>("Akim", Person::Gender::Male));
-	PhotoA2Test1.addPerson(std::make_unique<Person>("Ivan", Person::Gender::Male));
+	PhotoA2Test1.addPerson("Akim", Person::Gender::Male);
+	PhotoA2Test1.addPerson("Ivan", Person::Gender::Male);
 
-	PhotoA2Test3.addPerson(std::make_unique<Person>("Kiril", Person::Gender::Male));
-	PhotoA2Test3.addPerson(std::make_unique<Person>("Vlad", Person::Gender::Male));
+	PhotoA2Test3.addPerson("Kiril", Person::Gender::Male);
+	PhotoA2Test3.addPerson("Vlad", Person::Gender::Male);
 
-	PhotoA2Test4.addPerson(std::make_unique<Person>("Ivan", Person::Gender::Male));
-	PhotoA2Test4.addPerson(std::make_unique<Person>("Beatrisa", Person::Gender::Fermale));
+	PhotoA2Test4.addPerson("Ivan", Person::Gender::Male);
+	PhotoA2Test4.addPerson("Beatrisa", Person::Gender::Fermale);
 
-	PhotoA2Test5.addPerson(std::make_unique<Person>("Stas", Person::Gender::Male));
-	PhotoA2Test5.addPerson(std::make_unique<Person>("Beatrisa", Person::Gender::Fermale));
+	PhotoA2Test5.addPerson("Stas", Person::Gender::Male);
+	PhotoA2Test5.addPerson("Beatrisa", Person::Gender::Fermale);
 
-	PhotoA2Test6.addPerson(std::make_unique<Person>("Bernard", Person::Gender::Male));
-	PhotoA2Test6.addPerson(std::make_unique<Person>("Benedict", Person::Gender::Male));
+	PhotoA2Test6.addPerson("Bernard", Person::Gender::Male);
+	PhotoA2Test6.addPerson("Benedict", Person::Gender::Male);
 
-	PhotoA2Test7.addPerson(std::make_unique<Person>("Kristina", Person::Gender::Fermale));
-	PhotoA2Test7.addPerson(std::make_unique<Person>("Masha", Person::Gender::Male));
+	PhotoA2Test7.addPerson("Kristina", Person::Gender::Fermale);
+	PhotoA2Test7.addPerson("Masha", Person::Gender::Male);
 
-	PhotoA2Test9.addPerson(std::make_unique<Person>("Masha", Person::Gender::Male));
-	PhotoA2Test9.addPerson(std::make_unique<Person>("Ivan", Person::Gender::Male));
+	PhotoA2Test9.addPerson("Masha", Person::Gender::Male);
+	PhotoA2Test9.addPerson("Ivan", Person::Gender::Male);
 
-	PhotoA2Test10.addPerson(std::make_unique<Person>("Masha", Person::Gender::Fermale));
-	PhotoA2Test10.addPerson(std::make_unique<Person>("Akim", Person::Gender::Male));
+	PhotoA2Test10.addPerson("Masha", Person::Gender::Fermale);
+	PhotoA2Test10.addPerson("Akim", Person::Gender::Male);
 
 	Album TestAlbum1("TestAlbum1");
 
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test1)));
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test2)));
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test3)));
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test4)));
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test5)));
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test6)));
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test7)));
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test8)));
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test9)));
-	TestAlbum1.addPhoto(std::make_unique<Photo>(std::move(PhotoA1Test10)));
+	TestAlbum1.addPhoto(PhotoA1Test1);
+	TestAlbum1.addPhoto(PhotoA1Test2);
+	TestAlbum1.addPhoto(PhotoA1Test3);
+	TestAlbum1.addPhoto(PhotoA1Test4);
+	TestAlbum1.addPhoto(PhotoA1Test5);
+	TestAlbum1.addPhoto(PhotoA1Test6);
+	TestAlbum1.addPhoto(PhotoA1Test7);
+	TestAlbum1.addPhoto(PhotoA1Test8);
+	TestAlbum1.addPhoto(PhotoA1Test9);
+	TestAlbum1.addPhoto(PhotoA1Test10);
 
 	Album TestAlbum2("TestAlbum2");
 
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test1)));
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test2)));
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test3)));
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test4)));
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test5)));
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test6)));
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test7)));
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test8)));
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test9)));
-	TestAlbum2.addPhoto(std::make_unique<Photo>(std::move(PhotoA2Test10)));
+	TestAlbum2.addPhoto(PhotoA2Test1);
+	TestAlbum2.addPhoto(PhotoA2Test2);
+	TestAlbum2.addPhoto(PhotoA2Test3);
+	TestAlbum2.addPhoto(PhotoA2Test4);
+	TestAlbum2.addPhoto(PhotoA2Test5);
+	TestAlbum2.addPhoto(PhotoA2Test6);
+	TestAlbum2.addPhoto(PhotoA2Test7);
+	TestAlbum2.addPhoto(PhotoA2Test8);
+	TestAlbum2.addPhoto(PhotoA2Test9);
+	TestAlbum2.addPhoto(PhotoA2Test10);
 
 	Album TestAlbum3("TestAlbum3");
 
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test1)));
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test2)));
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test3)));
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test4)));
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test5)));
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test6)));
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test7)));
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test8)));
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test9)));
-	TestAlbum3.addPhoto(std::make_unique<Photo>(std::move(PhotoA3Test10)));
+	TestAlbum3.addPhoto(PhotoA3Test1);
+	TestAlbum3.addPhoto(PhotoA3Test2);
+	TestAlbum3.addPhoto(PhotoA3Test3);
+	TestAlbum3.addPhoto(PhotoA3Test4);
+	TestAlbum3.addPhoto(PhotoA3Test5);
+	TestAlbum3.addPhoto(PhotoA3Test6);
+	TestAlbum3.addPhoto(PhotoA3Test7);
+	TestAlbum3.addPhoto(PhotoA3Test8);
+	TestAlbum3.addPhoto(PhotoA3Test9);
+	TestAlbum3.addPhoto(PhotoA3Test10);
 
 	Album TestAlbum4("TestAlbum4");
 
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test1)));
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test2)));
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test3)));
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test4)));
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test5)));
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test6)));
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test7)));
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test8)));
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test9)));
-	TestAlbum4.addPhoto(std::make_unique<Photo>(std::move(PhotoA4Test10)));
+	TestAlbum4.addPhoto(PhotoA4Test1);
+	TestAlbum4.addPhoto(PhotoA4Test2);
+	TestAlbum4.addPhoto(PhotoA4Test3);
+	TestAlbum4.addPhoto(PhotoA4Test4);
+	TestAlbum4.addPhoto(PhotoA4Test5);
+	TestAlbum4.addPhoto(PhotoA4Test6);
+	TestAlbum4.addPhoto(PhotoA4Test7);
+	TestAlbum4.addPhoto(PhotoA4Test8);
+	TestAlbum4.addPhoto(PhotoA4Test9);
+	TestAlbum4.addPhoto(PhotoA4Test10);
+	
 
-	*/
+	
+
+	//TestAlbum4.addPhoto(PhotoA4Test10);
+	
 	Controller temp;
-	temp.printPhotoSeasonal();
+	temp.addAlbum(TestAlbum4);
+	temp.addAlbum(TestAlbum1);
+	temp.addAlbum(TestAlbum2);
+	temp.addAlbum(TestAlbum3);
+
+	//temp.printPhotoSeasonal();
+	temp.AlbumWithoutPeople();
+//	temp.FindandPrintPhotoWithAllFrineds();
+	//temp.printAllPhotosInTheLastYear();
+	//temp.printPhotoSeasonal();
+	//temp.printTheFiveMostPopularPeoples();
+	//temp.printTheFiveMostPopular—ities();
 
 	
 

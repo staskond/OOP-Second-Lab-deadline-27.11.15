@@ -1,9 +1,9 @@
 
-#include "contriller.h"
+#include "controller.h"
 #include <ctime>
 #include <algorithm>
 #include <unordered_map>
-//метод добавления нового альбома
+
 void Controller::addAlbum(Album & _album)
 {
 m_albums.push_back(std::make_unique<Album>(std::move(_album)));
@@ -22,6 +22,9 @@ void Controller::addPerson(Person & _person, std::string & _roadToFile)
 		}
 
 }*/
+
+
+
 //возвращает один год в секундах
 int Controller::OneYearInTheSeconds()
 {
@@ -55,7 +58,7 @@ void Controller::printAllPhotosInTheLastYear()
 void Controller::AlbumWithoutPeople()
 {
 	std::cout << "Albums where are no people: " << std::endl;
-	bool isEmpty{ true };
+	bool isEmpty = true;
 	for (auto const & pAlbum : m_albums)
 	{
 		for (auto const & pPhoto : pAlbum->GetPhoto())
@@ -64,9 +67,10 @@ void Controller::AlbumWithoutPeople()
 			{
 				isEmpty = false;
 				break;
+				
 			}
 		}
-		if (isEmpty)
+		if (!isEmpty)
 			std::cout << pAlbum->GetAlbumName() << std::endl;
 	}
 }
@@ -74,17 +78,19 @@ void Controller::AlbumWithoutPeople()
 void Controller::AlbumWithPeople()
 {
 	std::cout << "Albums with people: " << std::endl;
-	bool isEmpty{ true };
+	bool isEmpty = true ;
 	for (auto const & pAlbum : m_albums)
 	{
 		for (auto const & pPhoto : pAlbum->GetPhoto())
 		{
-			if (pPhoto->GetPerson().empty())
+			if (!pPhoto->GetPerson().empty())
 			{
 				isEmpty = false;
 				break;
+				
 			}
-		}
+		}		
+
 		if (!isEmpty)
 			std::cout << pAlbum->GetAlbumName() << std::endl;
 	}
@@ -94,12 +100,14 @@ void Controller::AlbumWithPeople()
 
 void Controller::printSeason(std::vector <std::string > _value)
 {
+	
 	if (!_value.empty())
 	{
 		for (auto pvector : _value)
-			std::cout << pvector << std::endl;
+			std::cout << "\t" << pvector << std::endl;
 	}
 }
+
 void Controller::printPhotoSeasonal()
 {
 	
@@ -107,6 +115,7 @@ void Controller::printPhotoSeasonal()
 	std::vector < std::string > m_spring;
 	std::vector < std::string > m_summer;
 	std::vector < std::string > m_autumn;
+
 	for(auto const & pAlbum : m_albums)
 		for (auto const & pPhoto : pAlbum->GetPhoto())
 		{
@@ -135,6 +144,7 @@ void Controller::printPhotoSeasonal()
 	printSeason(m_spring);
 	std::cout << "Photos made in summer: " << std::endl;
 	printSeason(m_summer);
+//	assert(!m_summer.empty());
 	
 }
 
@@ -157,14 +167,16 @@ void Controller::printTheFiveMostPopularСities()
 				HelpTempStruct newTempCity{ pPhoto->GetPlace().GetCity(), 1};
 				m_cities.push_back(newTempCity);
 			}
-			//std::vector<HelpTempStruct>::iterator
-			auto begincopy = m_cities.begin();
-			if (m_cities.begin()->m_city == pPhoto->GetPlace().GetCity())
-			{
-				m_cities.begin()->count++;
-				break;
+			else {
+				//std::vector<HelpTempStruct>::iterator
+				auto begincopy = m_cities.begin();
+				if (m_cities.begin()->m_city == pPhoto->GetPlace().GetCity())
+				{
+					m_cities.begin()->count++;
+					break;
+				}
+			//	begincopy++;
 			}
-			begincopy++;
 		};
 	};
 
@@ -176,7 +188,7 @@ void Controller::printTheFiveMostPopularСities()
 
 		std::cout << "The five most popular cities: " << std::endl;
 		for (auto it = m_cities.begin(); it < m_cities.begin() + 5; it++)
-			std::cout << it->m_city << std::endl;
+			std::cout << "\t"<< it->m_city << std::endl;
 }
 
 void Controller::printTheFiveMostPopularPeoples()
@@ -219,7 +231,7 @@ void Controller::printTheFiveMostPopularPeoples()
 
 		std::cout << "The five most popular peoples: " << std::endl;
 		for (auto it = m_persons.begin(); it != m_persons.begin() + 5; it++)
-			std::cout << it->m_name << std::endl;;
+			std::cout << "\t" << it->m_name << std::endl;;
 }
 
 
@@ -279,7 +291,7 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 					{
 						PairFriends newTempPair{ m_persons[i].m_name, m_persons[j].m_name };
 						m_vecFriends.push_back(newTempPair);
-						count = -1;
+						count = 0;
 						break;
 					}
 				}
@@ -290,7 +302,7 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 	{
 		std::cout << "Friends:(Two men captured more than three times in the photos: )" << std::endl;
 		for (auto PairFriends : m_vecFriends)
-			std::cout << PairFriends.m_firstFriend << " friends with " << PairFriends.m_secondFriend << std::endl;
+			std::cout << "\t"<< PairFriends.m_firstFriend << " friends with " << PairFriends.m_secondFriend << std::endl;
 
 	}
 }

@@ -18,6 +18,8 @@ Person * Person::Make(const std::string & _fullName, const std::string & _Gender
 
 */
 
+
+
 Person::Person(const std::string & _fullName, Gender _gender)
 	:m_FullName(_fullName), m_Gender(_gender)
 {

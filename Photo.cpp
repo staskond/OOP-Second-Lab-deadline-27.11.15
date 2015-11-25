@@ -38,6 +38,7 @@ std::ostream & operator << (std::ostream & _o, Place _p)
 	_o << _p.GetPlaceNamed() << "\t" << _p.GetCountry() << "\t" << _p.GetCity() << std::endl;
 	return _o;
 }
+
 void Photo::IsValidePhoto() const
 {
 	if (m_roadToFile.empty())
@@ -56,10 +57,15 @@ void Photo::PrintDate()
 	std::cout << m_date.GetYear() << "/" << m_date.GetMonth() << "/" << m_date.GetDay();
 }
 
+void Photo::addPerson(const std::string & _name, Person::Gender _gender)
+{
+	m_person.push_back(std::make_unique<Person>(_name, _gender));
+}
+/*
 void Photo::addPerson(std::unique_ptr<Person> _person)
 {
-	m_person.push_back(std::move(_person));
-}
+	m_person.push_back(std::move(_person))
+}*/
 
 
 

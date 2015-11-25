@@ -9,7 +9,7 @@ Album::Album(const std::string & _AlbumName)
 }
 
 Album::Album(const std::string & _AlbumName, std::initializer_list<Photo*> _photo)
-	:m_AlbumName(_AlbumName)
+	: m_AlbumName(_AlbumName)
 {
 	// Обходим список инициализаторов и поэлементно добавляем фото в альбом
 	for (Photo * m_photo : _photo)
@@ -21,12 +21,17 @@ Album::~Album()
 {
 	clearPhoto();
 }*/
-
+/**/
 
 void Album::addPhoto(std::unique_ptr< Photo > _photo)
 {
 	// Объекты std::unique_ptr не копируются, но зато эффективно перемещаются
-	m_photo.push_back(std::move(_photo));
+	//m_photo.push_back(std::move(_photo));
+}
+
+void Album::addPhoto(Photo & _photo)
+{
+	m_photo.push_back(std::make_unique<Photo>(std::move(_photo)));
 }
 
 void Album::clearPhoto()

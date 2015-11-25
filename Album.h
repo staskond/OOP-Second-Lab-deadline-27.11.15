@@ -13,6 +13,7 @@ public:
 	//Album & operator = (const Album &) = delete;
 	size_t getPhotoCount() const;//метод возвращающий количество фото в альбоме
 	void addPhoto(std::unique_ptr< Photo > _photo);//метод добовл€ющий фото в конец альбома
+	void addPhoto(Photo &_photo);
 	void clearPhoto();
 	void removePhoto(Photo const & _photo);
 	bool hasPhoto(Photo const & _photo) const;
@@ -20,7 +21,6 @@ public:
 	const std::vector< std::unique_ptr< Photo > > & GetPhoto() const { return m_photo; };
 
 private:
-	friend class Application;
 	//название альбома
 	const std::string & m_AlbumName;
 	//набор фото

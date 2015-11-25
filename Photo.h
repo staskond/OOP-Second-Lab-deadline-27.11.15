@@ -15,15 +15,31 @@ class Photo
 public:
 	Photo() = default;
 	//конструктор, задающий путь к файлу, дату, время и комментарий
-	Photo(const std::string & _roadTOFile, Date _date, Time _time, const std::string & _commet); 
+	Photo(const std::string & _roadTOFile,
+		Date _date,
+		Time _time,
+		const std::string & _commet); 
 
 	//конструктор, задающий путь к файлу, дату, время, место, личность на фотограффии и комментарий реализация №1
-	Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr< Person > _person, Place _place, const std::string & _commet);
+	Photo(const std::string & _roadTOFile,
+		Date _date,
+		Time _time,
+		std::unique_ptr< Person > _person,
+		Place _place,
+		const std::string & _commet);
 
 	//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1	
-	Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr< Person > _person, const std::string & _commet);
+	Photo(const std::string & _roadTOFile,
+		Date _date,
+		Time _time,
+		std::unique_ptr< Person > _person,
+		const std::string & _commet);
 	//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1
-	Photo(const std::string & _roadTOFile, Date _date, Time _time, Place _place, const std::string & _commet);
+	Photo(const std::string & _roadTOFile,
+		Date _date,
+		Time _time,
+		Place _place,
+		const std::string & _commet);
 //	int SizePersonVec();
 	//Person const & getPerson(int index) const;
 	//void addPerson(std::unique_ptr< Person > _obj, std::string & _roadToPhoto);
@@ -36,8 +52,9 @@ public:
 	const Time & GetTime() const;
 	void IsValidePhoto() const;
 	void PrintTime();
+//	void addPerson1(Person _person);
 	void PrintDate();
-	void addPerson(std::unique_ptr< Person > _person);
+	void addPerson(const std::string & _name, Person::Gender _gender);
 	int GetСonvertTheTimeInSeconds() const;
 
 	const std::vector< std::unique_ptr< Person > >& GetPerson() const {

@@ -14,6 +14,7 @@ public:
 	const std::string & GetFullName() const;
 	const Gender & GetGender() const;
 	Person(const std::string & _fullName, Gender _gender);
+
 //	const std::vector <Person > GetPersons() {
 	//	return m_persons;
 	//};
