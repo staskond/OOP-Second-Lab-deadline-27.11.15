@@ -36,11 +36,7 @@ int main() {
 //	{
 //		std::cout << photo->GetPlace() << std::endl;
 //	}*/
-	//"Andrey", "Stas", "Kiril", "Sveta", "Julia", "Alina", "Nika"
-	//p1 Andrey, Sveta, Julia        // Andrey - Julia :1    Andrey-Sveta :1     Sveta-Julia :1
-	//p2 Julia, Alina, Andrey        // Andrey - Julia :2    Andrey-Alina :1     Alina-Julia:1
-	//p3 Julia, Kiril, Andrey        //Andrey - Julia:3      Julia-Kiril:1      Kiril-Andrey:1
-	//p4 Andrey - Alina:2/*
+
 	
 	Photo PhotoA1Test1("D:\\AlbumFirst\\phototest1.jpg", Date(2015, 1, 10), Time(14, 07), std::make_unique <Person>("Andrey", Person::Gender::Male), Place("Mountain", "Dombai", "Russia"), "Отдых 2015");
 	Photo PhotoA1Test2("D:\\AlbumFirst\\phototest2.jpg", Date(2015, 10, 23), Time(23, 16), std::make_unique <Person>("Alina", Person::Gender::Fermale), "Отдых 2015");
@@ -232,17 +228,17 @@ int main() {
 	temp.addAlbum(TestAlbum3);
 	
 //	temp.AlbumWithPeople();
-	temp.AlbumWithoutPeople();
+	temp.AlbumWithoutPeople();//почему-то передается на печать из гетера пустое значение альбома(строк ошибки в файле controller, строка 74)
 	std::cin.get();
-	temp.FindandPrintPhotoWithAllFrineds();//не работает
+	temp.FindandPrintPhotoWithAllFrineds();//работает
 	std::cin.get();
 	temp.printAllPhotosInTheLastYear();//работает
 	std::cin.get();
 	temp.printPhotoSeasonal();//работает
 	std::cin.get();
-	temp.printTheFiveMostPopularPeoples();
+	temp.printTheFiveMostPopularPeoples();//работает
 	std::cin.get();
-	temp.printTheFiveMostPopularСities();
+	temp.printTheFiveMostPopularСities();//работает
 	std::cin.get();
 
 	
