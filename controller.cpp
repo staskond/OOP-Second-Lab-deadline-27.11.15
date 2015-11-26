@@ -71,7 +71,7 @@ void Controller::AlbumWithoutPeople()
 			}
 		}
 		if (Empty)
-			std::cout << "\t prohod"<< pAlbum->GetAlbumName()<< std::endl;
+			std::cout << "\t prohod"<< pAlbum->GetAlbumName()<< std::endl;//проход чтобы спецально видеть сколько значений должно добавится
 	}
 }
 /*
