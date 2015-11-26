@@ -13,7 +13,7 @@ public:
 	void printAllPhotosInTheLastYear();
 	int OneYearInTheSeconds();
 	void AlbumWithoutPeople();
-	void AlbumWithPeople();
+	//void AlbumWithPeople();
 	void printPhotoSeasonal();
 	void printTheFiveMostPopular—ities();
 	void printTheFiveMostPopularPeoples();;

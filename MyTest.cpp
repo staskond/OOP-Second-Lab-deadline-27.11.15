@@ -231,7 +231,7 @@ int main() {
 	temp.addAlbum(TestAlbum2);
 	temp.addAlbum(TestAlbum3);
 	
-	temp.AlbumWithPeople();
+//	temp.AlbumWithPeople();
 	temp.AlbumWithoutPeople();
 	std::cin.get();
 	temp.FindandPrintPhotoWithAllFrineds();//ÌÂ ‡·ÓÚ‡ÂÚ
@@ -244,6 +244,7 @@ int main() {
 	std::cin.get();
 	temp.printTheFiveMostPopular—ities();
 	std::cin.get();
+
 	
 
 //	for (auto const & pPhoto : testAlbum.GetPhoto())

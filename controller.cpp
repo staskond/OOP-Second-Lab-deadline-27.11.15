@@ -61,20 +61,20 @@ void Controller::AlbumWithoutPeople()
 	
 	for (auto const & pAlbum : m_albums)
 	{
-		bool Empty = false;
+		bool Empty = true;
 		for (auto const & pPhoto : pAlbum->GetPhoto())
 		{
-			if (pPhoto->GetPerson().empty())
+			if (!pPhoto->GetPerson().empty())
 			{
-				Empty = true;
+				Empty = false;
 				break;			
 			}
 		}
 		if (Empty)
-			std::cout << "\t"<< pAlbum->GetAlbumName()<< std::endl;
+			std::cout << "\t prohod"<< pAlbum->GetAlbumName()<< std::endl;
 	}
 }
-
+/*
 void Controller::AlbumWithPeople()
 {
 	std::cout << "Albums with people: " << std::endl;
@@ -95,7 +95,7 @@ void Controller::AlbumWithPeople()
 		if (!isEmpty)
 			pAlbum->PrintAlbumName();
 	}
-}
+}*/
 
 
 
