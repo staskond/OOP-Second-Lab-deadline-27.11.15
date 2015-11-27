@@ -37,7 +37,7 @@ int main() {
 //		std::cout << photo->GetPlace() << std::endl;
 //	}*/
 
-	
+	/*
 	Photo PhotoA1Test1("D:\\AlbumFirst\\phototest1.jpg", Date(2015, 1, 10), Time(14, 07), std::make_unique <Person>("Andrey", Person::Gender::Male), Place("Mountain", "Dombai", "Russia"), "־עהûץ 2015");
 	Photo PhotoA1Test2("D:\\AlbumFirst\\phototest2.jpg", Date(2015, 10, 23), Time(23, 16), std::make_unique <Person>("Alina", Person::Gender::Fermale), "־עהûץ 2015");
 	Photo PhotoA1Test3("D:\\AlbumFirst\\phototest3.jpg", Date(2015, 10, 11), Time(21, 9), std::make_unique <Person>("Kiril", Person::Gender::Male), Place("Kreml", "Moscow", "Russia"), "־עהûץ 2015");
@@ -242,7 +242,7 @@ int main() {
 	std::cin.get();
 
 	
-
+	*/
 //	for (auto const & pPhoto : testAlbum.GetPhoto())
 //	{
 //		for(auto const & pPerson: pPhoto->GetPerson())

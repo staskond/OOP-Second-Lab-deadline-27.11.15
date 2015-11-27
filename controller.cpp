@@ -1,4 +1,4 @@
-
+/*
 #include "controller.h"
 #include <ctime>
 #include <algorithm>
@@ -8,20 +8,7 @@ void Controller::addAlbum(Album & _album)
 {
 m_albums.push_back(std::make_unique<Album>(std::move(_album)));
 }
-/*
-void Controller::addPerson(Person & _person, std::string & _roadToFile)
-{
-	for(auto const & pAlbum: m_albums)
-		for (auto const & pPhoto : pAlbum->GetPhoto())
-		{
-			if (pPhoto->GetRoadToFile() == _roadToFile)
-			{
-				for (auto const & pPerson : pPhoto->GetPerson())
-					pPerson->m_FullName().push_beck(_person.GetFullName());
-			}
-		}
 
-}*/
 
 
 
@@ -74,28 +61,7 @@ void Controller::AlbumWithoutPeople()
 			std::cout << "\t prohod"<< pAlbum->GetAlbumName()<< std::endl;//ÔÓıÓ‰ ˜ÚÓ·˚ ÒÔÂˆ‡Î¸ÌÓ ‚Ë‰ÂÚ¸ ÒÍÓÎ¸ÍÓ ÁÌ‡˜ÂÌËÈ ‰ÓÎÊÌÓ ‰Ó·‡‚ËÚÒˇ
 	}
 }
-/*
-void Controller::AlbumWithPeople()
-{
-	std::cout << "Albums with people: " << std::endl;
 
-	for (auto const & pAlbum : m_albums)
-	{
-		bool isEmpty = false;
-		for (auto const & pPhoto : pAlbum->GetPhoto())
-		{
-			if (pPhoto->GetPerson().empty())
-			{
-				isEmpty = true;
-				break;
-				
-			}
-		}		
-
-		if (!isEmpty)
-			pAlbum->PrintAlbumName();
-	}
-}*/
 
 
 
@@ -201,10 +167,7 @@ void Controller::printTheFiveMostPopular—ities()
 	std::cout << "The five most popular cities: " << std::endl;
 		for (auto it = m_cities.begin(); it < m_cities.begin() + 5; it++)
 			std::cout << "\t"<< it->m_city << std::endl;
-	/*for (auto const & pPerson : m_cities)
-	{
-		std::cout << "\t" << m_cities.begin()->m_city<< std::endl;
-	}*/
+
 
 }
 
@@ -263,12 +226,6 @@ void Controller::printTheFiveMostPopularPeoples()
 		std::cout << "The five most popular peoples: " << std::endl;
 		for (auto it = m_persons.begin(); it != m_persons.begin() + 5; it++)
 			std::cout << "\t" << it->m_name << std::endl;
-	/*auto it = m_persons.begin() + 5;
-	for (auto const & pPerson : m_persons)
-	{
-	  if(m_persons.begin() != it)
-		  std::cout << "\t" << it->m_name << std::endl;
-	}*/
 
 }
 void Controller::FindandPrintPhotoWithAllFrineds()
@@ -354,5 +311,5 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 	}
 }
 
-
+*/
 

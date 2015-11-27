@@ -13,7 +13,6 @@ public:
 	bool isValide() const;
 //	void NextMinute();
 private:
-	friend class Contorller;
 	//Time(const int _hour, const int _minutes);закрытый конструктор фабрик, нужен только если буду использовать этот метод
 	int m_hour;
 	int m_minutes;

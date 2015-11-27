@@ -15,30 +15,30 @@ class Photo
 public:
 	Photo() = default;
 	//конструктор, задающий путь к файлу, дату, время и комментарий
-	Photo(const std::string & _roadTOFile,
+	/*Photo(const std::string & _roadTOFile,
 		Date _date,
 		Time _time,
-		const std::string & _commet); 
+		const std::string & _commet); */
 
 	//конструктор, задающий путь к файлу, дату, время, место, личность на фотограффии и комментарий реализация №1
 	Photo(const std::string & _roadTOFile,
 		Date _date,
 		Time _time,
 		std::unique_ptr< Person > _person,
-		Place _place,
+		Place &_place,
 		const std::string & _commet);
 
 	//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1	
-	Photo(const std::string & _roadTOFile,
+	/*Photo(const std::string & _roadTOFile,
 		Date _date,
 		Time _time,
 		std::unique_ptr< Person > _person,
-		const std::string & _commet);
+		const std::string & _commet);*/
 	//конструктор, задающий путь к файлу, дату, время,  личность на фотограффии и комментарий реализация №1
 	Photo(const std::string & _roadTOFile,
 		Date _date,
 		Time _time,
-		Place _place,
+		Place &_place,
 		const std::string & _commet);
 //	int SizePersonVec();
 	//Person const & getPerson(int index) const;
@@ -60,15 +60,14 @@ public:
 	const std::vector< std::unique_ptr< Person > >& GetPerson() const {
 		return m_person;
 	};
-	const Place GetPlace() const { return m_place; };
+	const Place &GetPlace() const { return m_place; };
 private:
-	friend class Album;
-	friend class Contriller;
+
 	Date m_date;
 	Time m_time;
 	const std::string m_roadToFile;
 	const std::string m_commet;
-	Place m_place;
+	Place &m_place;
 	std::vector< std::unique_ptr< Person > > m_person;
 	
 	

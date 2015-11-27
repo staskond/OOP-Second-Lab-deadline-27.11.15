@@ -64,7 +64,7 @@ void Photo::addPerson(std::unique_ptr<Person> _person)
 
 
 
-
+/*
 Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, const std::string & _commet)
 	:m_roadToFile(_roadTOFile),
 	m_date(_date),
@@ -72,10 +72,10 @@ Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, const std:
 	m_commet(_commet)
 {
 	IsValidePhoto();
-}
+}*/
 
 
-Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr< Person > _person , Place _place, const std::string & _commet)
+Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr< Person > _person , Place &_place, const std::string & _commet)
 	:m_roadToFile(_roadTOFile),
 	m_date(_date),
 	m_time(_time),
@@ -85,7 +85,7 @@ Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::uniqu
 	m_person.push_back(std::move(_person));
 	IsValidePhoto();
 }
-
+/*
 
 Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::unique_ptr<Person> _person, const std::string & _commet)
 	:m_roadToFile(_roadTOFile),
@@ -96,8 +96,8 @@ Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, std::uniqu
 	m_person.push_back(std::move(_person));
 	IsValidePhoto();
 }
-
-Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, Place _place, const std::string & _commet)
+*/
+Photo::Photo(const std::string & _roadTOFile, Date _date, Time _time, Place &_place, const std::string & _commet)
 	:m_roadToFile(_roadTOFile),
 	m_date(_date),
 	m_time(_time),

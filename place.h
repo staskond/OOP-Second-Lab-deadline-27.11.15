@@ -7,15 +7,17 @@ class Place
 {
 public:
 	Place() = default;
+	Place(const Place &) = delete;
+	Place & operator = (const Place &) = delete;
+
 	Place(const std::string & _PlaceNamed, const std::string & _city, const std::string & _country);
 
-	const std::string & GetPlaceNamed() const;
-	const std::string & GetCity() const;
-	const std::string & GetCountry() const;
+	const std::string GetPlaceNamed() const;
+	const std::string GetCity() const;
+	const std::string GetCountry() const;
 
 private:
-	friend class Photo;
-	friend class Controller;
+
 	const std::string m_PlaceNamed;
 	const std::string m_city;
 	const std::string m_country;
@@ -23,17 +25,17 @@ private:
 };
 
 
-inline const std::string & Place::GetPlaceNamed() const
+inline const std::string Place::GetPlaceNamed() const
 {
 	return m_PlaceNamed;
 }
 
-inline const std::string & Place::GetCity() const
+inline const std::string Place::GetCity() const
 {
 	return m_city;
 }
 
-inline const std::string & Place::GetCountry() const
+inline const std::string Place::GetCountry() const
 {
 	return m_country;
 }
