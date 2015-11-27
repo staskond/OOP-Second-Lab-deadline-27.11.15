@@ -6,10 +6,14 @@
 
 void Controller::addAlbum(Album & _album)
 {
-m_albums.push_back(std::make_unique<Album>(std::move(_album)));
+	m_albums.push_back(std::make_unique<Album>(std::move(_album)));
+
 }
 
-
+void Controller::addPhoto(Photo & _album)
+{
+	m_photos.push_back(std::make_unique<Photo>(std::move(_album)));
+}
 
 
 //возвращает один год в секундах
@@ -27,17 +31,17 @@ int Controller::OneYearInTheSeconds()
 void Controller::printAllPhotosInTheLastYear()
 {
 	std::cout << "Photo for the last year: " << std::endl;
-	for (auto const & pAlbum : m_albums)
+	//for (auto const & pAlbum : m_albums)
 		for (auto const & pPhoto : m_photos)
 		{
 			size_t currentTime = time(nullptr);
 			size_t timePhotoInSeconds = pPhoto->GetСonvertTheTimeInSeconds();
 			if ((currentTime - timePhotoInSeconds) < OneYearInTheSeconds())
 			{
-				std::cout << "\t"<< pPhoto->GetRoadToFile();
+				std::cout << "\t" << pPhoto->GetRoadToFile();
 				pPhoto->PrintDate();
 				pPhoto->PrintTime();
-				
+
 			}
 		}
 }
@@ -45,29 +49,68 @@ void Controller::printAllPhotosInTheLastYear()
 void Controller::AlbumWithoutPeople()
 {
 	std::cout << "Albums where are no people: " << std::endl;
-	
+
 	for (auto const & pAlbum : m_albums)
 	{
 		bool Empty = true;
-		for (auto const & pPhoto : m_photos)
+		for (auto const & pPhoto : pAlbum->m_photo)
 		{
 			if (!pPhoto->m_person.empty())
 			{
 				Empty = false;
-				break;			
+				break;
 			}
-		}
+	}
 		if (Empty)
-			std::cout << "\t prohod"<< pAlbum->GetAlbumName()<< std::endl;//проход чтобы спецально видеть сколько значений должно добавится
+			std::cout << "\t prohod" << pAlbum->GetAlbumName() << std::endl;//проход чтобы спецально видеть сколько значений должно добавится
 	}
 }
 
 
 
 
+
+
+void Controller::printPhotoSeasonal()
+{
+	distributionSeason();
+	std::vector < std::string > m_winter, m_spring, m_summer, m_autumn;
+	for (auto const & pPhoto : m_photos) {
+		if(Season::Winter)
+		{
+			m_winter.push_back(pPhoto->GetRoadToFile());
+			
+		}
+		else if(Season::Spring)
+		{
+				m_spring.push_back(pPhoto->GetRoadToFile());
+				
+		}
+		else if (Season::Autumn)
+		{
+				m_autumn.push_back(pPhoto->GetRoadToFile());
+				
+		}
+		else if (Season::Summer)
+		{
+				m_summer.push_back(pPhoto->GetRoadToFile());
+				
+		}
+	}
+	std::cout << "Photos made in winter: " << std::endl;
+	printSeason(m_winter);
+	std::cout << "Photos made in autumn: " << std::endl;
+	printSeason(m_autumn);
+	std::cout << "Photos made in spring: " << std::endl;
+	printSeason(m_spring);
+	std::cout << "Photos made in summer: " << std::endl;
+	printSeason(m_summer);
+
+}
+
 void Controller::printSeason(std::vector <std::string > _value)
 {
-	
+
 	if (!_value.empty())
 	{
 		for (auto pvector : _value)
@@ -75,32 +118,72 @@ void Controller::printSeason(std::vector <std::string > _value)
 	}
 }
 
+Controller::Season Controller::distributionSeason()
+{
+
+	for (auto const & pPhoto : m_photos)
+	{
+		int Month = pPhoto->GetDate().GetMonth();
+		if (Month > 11 && Month < 3){
+			return Season::Winter; 
+		}
+		else if (Month > 2 && Month < 6) {
+			return Season::Spring; 
+		}
+		else if (Month > 5 && Month < 9) {
+			return Season::Summer; 
+		}
+		else if ((Month > 8 && Month < 12)){
+			return Season::Autumn;
+		}
+		else {
+			return Season::Incorrect; 
+		}
+	}
+}
+
+
+
+/*
 void Controller::printPhotoSeasonal()
 {
-	
+
+
+//Реализация функции printPhotoSeasonal попахивает полным говнокодом.
+//Ввести энум для сезона, метод классификации месяца, возвращающий сезон,
+//а вместо 4 контейнеров и тучи условий с одинаковым кодом использовать массив, энум сезон в качестве индекса.
+
+
+
+
+
 	std::vector < std::string > m_winter;
 	std::vector < std::string > m_spring;
 	std::vector < std::string > m_summer;
 	std::vector < std::string > m_autumn;
 
-	for(auto const & pAlbum : m_albums)
+	for (auto const & pAlbum : m_albums)
 		for (auto const & pPhoto : m_photos)
 		{
 			if (pPhoto->GetDate().GetMonth() > 11 &&
 				pPhoto->GetDate().GetMonth() < 3)
 				m_winter.push_back(pPhoto->GetRoadToFile());
+				break;
 
 			else if (pPhoto->GetDate().GetMonth() > 2 &&
 				pPhoto->GetDate().GetMonth() < 6)
 				m_spring.push_back(pPhoto->GetRoadToFile());
+				break;
 
 			else if (pPhoto->GetDate().GetMonth() > 5 &&
 				pPhoto->GetDate().GetMonth() < 9)
 				m_summer.push_back(pPhoto->GetRoadToFile());
+				break;
 
 			else if (pPhoto->GetDate().GetMonth() > 8 &&
 				pPhoto->GetDate().GetMonth() < 12)
 				m_autumn.push_back(pPhoto->GetRoadToFile());
+				break;
 			else break;
 		}
 	std::cout << "Photos made in  winter: " << std::endl;
@@ -111,9 +194,9 @@ void Controller::printPhotoSeasonal()
 	printSeason(m_spring);
 	std::cout << "Photos made in summer: " << std::endl;
 	printSeason(m_summer);
-//	assert(!m_summer.empty());
-	
-}
+	//	assert(!m_summer.empty());
+*/
+
 
 void Controller::printTheFiveMostPopularСities()
 {
@@ -128,7 +211,7 @@ void Controller::printTheFiveMostPopularСities()
 	std::vector <HelpTempStruct> m_cities;
 	for (auto const & pAlbum : m_albums)
 	{
-		for (auto const & pPhoto : m_photos)
+		for (auto const & pPhoto : pAlbum->m_photo)
 		{
 			if (m_cities.empty())
 			{
@@ -181,8 +264,8 @@ void Controller::printTheFiveMostPopularPeoples()
 	};
 
 	std::vector<HelpTempStruct> m_persons;
-	for (auto const & pAlbum : m_albums)
-	{
+//	for (auto const & pAlbum : m_albums)
+//	{
 		for (auto const & pPhoto : m_photos)
 			std::for_each(pPhoto->m_person.begin(), pPhoto->m_person.end(), [&](auto &_person)//std::unique_ptr <Person> & _person должно было быть, но в таком варианте не компилелось 
 		{
@@ -216,7 +299,7 @@ void Controller::printTheFiveMostPopularPeoples()
 			}
 
 		});
-	}
+//	}
 	std::sort(m_persons.begin(), m_persons.end(), [](HelpTempStruct _first, HelpTempStruct _second)
 	{
 		return _first.m_count < _second.m_count;
@@ -237,8 +320,8 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 	};
 
 	std::vector <HelpTempStruct> m_persons;
-	for (auto const & pAlbum : m_albums)
-	{
+	//for (auto const & pAlbum : m_albums)
+//	{
 		for (auto const & pPhoto : m_photos)
 		{
 			for (auto const & pPerson : pPhoto->m_person)
@@ -271,7 +354,7 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 					}
 				}
 			}
-		}
+	//	}
 	}
 
 	struct PairFriends

@@ -57,12 +57,12 @@ public:
 	void addPerson(const std::string & _name, Person::Gender _gender);
 	int Get—onvertTheTimeInSeconds() const;
 
-	const std::vector< std::unique_ptr< Person > >& GetPerson() const {
-		return m_person;
-	};
+	//const std::vector< std::unique_ptr< Person > >& GetPerson() const {
+//		return m_person;
+//	};
 	const Place &GetPlace() const { return m_place; };
 private:
-
+	friend class Controller;
 	Date m_date;
 	Time m_time;
 	const std::string m_roadToFile;

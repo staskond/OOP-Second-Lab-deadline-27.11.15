@@ -20,9 +20,10 @@ public:
 	void removePhoto(Photo const & _photo);
 	bool hasPhoto(Photo const & _photo) const;
 	const std::string & GetAlbumName() const;
-	const std::vector< std::unique_ptr< Photo > > & GetPhoto() const { return m_photo; };
+//	const std::vector< std::unique_ptr< Photo > > & GetPhoto() const { return m_photo; };
 
 private:
+	friend class Controller;
 	//название альбома
 	const std::string & m_AlbumName;
 	//набор фото
