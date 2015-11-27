@@ -1,4 +1,4 @@
-/*
+
 #include "controller.h"
 #include <ctime>
 #include <algorithm>
@@ -28,7 +28,7 @@ void Controller::printAllPhotosInTheLastYear()
 {
 	std::cout << "Photo for the last year: " << std::endl;
 	for (auto const & pAlbum : m_albums)
-		for (auto const & pPhoto : pAlbum->GetPhoto())
+		for (auto const & pPhoto : m_photos)
 		{
 			size_t currentTime = time(nullptr);
 			size_t timePhotoInSeconds = pPhoto->GetСonvertTheTimeInSeconds();
@@ -49,9 +49,9 @@ void Controller::AlbumWithoutPeople()
 	for (auto const & pAlbum : m_albums)
 	{
 		bool Empty = true;
-		for (auto const & pPhoto : pAlbum->GetPhoto())
+		for (auto const & pPhoto : m_photos)
 		{
-			if (!pPhoto->GetPerson().empty())
+			if (!pPhoto->m_person.empty())
 			{
 				Empty = false;
 				break;			
@@ -84,7 +84,7 @@ void Controller::printPhotoSeasonal()
 	std::vector < std::string > m_autumn;
 
 	for(auto const & pAlbum : m_albums)
-		for (auto const & pPhoto : pAlbum->GetPhoto())
+		for (auto const & pPhoto : m_photos)
 		{
 			if (pPhoto->GetDate().GetMonth() > 11 &&
 				pPhoto->GetDate().GetMonth() < 3)
@@ -128,7 +128,7 @@ void Controller::printTheFiveMostPopularСities()
 	std::vector <HelpTempStruct> m_cities;
 	for (auto const & pAlbum : m_albums)
 	{
-		for (auto const & pPhoto : pAlbum->GetPhoto())
+		for (auto const & pPhoto : m_photos)
 		{
 			if (m_cities.empty())
 			{
@@ -183,8 +183,8 @@ void Controller::printTheFiveMostPopularPeoples()
 	std::vector<HelpTempStruct> m_persons;
 	for (auto const & pAlbum : m_albums)
 	{
-		for (auto const & pPhoto : pAlbum->GetPhoto())
-			std::for_each(pPhoto->GetPerson().begin(), pPhoto->GetPerson().end(), [&](auto &_person)//std::unique_ptr <Person> & _person должно было быть, но в таком варианте не компилелось 
+		for (auto const & pPhoto : m_photos)
+			std::for_each(pPhoto->m_person.begin(), pPhoto->m_person.end(), [&](auto &_person)//std::unique_ptr <Person> & _person должно было быть, но в таком варианте не компилелось 
 		{
 			if (m_persons.empty())
 			{
@@ -239,9 +239,9 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 	std::vector <HelpTempStruct> m_persons;
 	for (auto const & pAlbum : m_albums)
 	{
-		for (auto const & pPhoto : pAlbum->GetPhoto())
+		for (auto const & pPhoto : m_photos)
 		{
-			for (auto const & pPerson : pPhoto->GetPerson())
+			for (auto const & pPerson : pPhoto->m_person)
 			{
 				if (m_persons.empty())
 				{
@@ -310,6 +310,4 @@ void Controller::FindandPrintPhotoWithAllFrineds()
 
 	}
 }
-
-*/
 
